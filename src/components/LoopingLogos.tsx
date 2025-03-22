@@ -1,5 +1,7 @@
 import React from 'react';
 import '../styles/LoopingLogos.css';
+import '../styles/animations.css';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 // emaple here: https://www.smashingmagazine.com/2024/04/infinite-scrolling-logos-html-css/
 interface Logo {
@@ -11,6 +13,7 @@ interface Logo {
 }
 
 const LoopingLogos = () => {
+  const [ref, isVisible] = useIntersectionObserver<HTMLDivElement>();
   const logos: Logo[] = [
     {
       src: 'https://cdn.prod.website-files.com/649008cce797bf09c949230d/64cb590127a43be284ef6f96_copenhagen%20logo.webp',
@@ -72,7 +75,7 @@ const LoopingLogos = () => {
   ];
 
   return (
-    <div>
+    <div ref={ref} className={`fade-in-up ${isVisible ? 'visible' : ''}`}>
       <h3>The SimSchool Global Community</h3>
       <div className="marquee marquee--6">
         {logos.map((logo, index) => (

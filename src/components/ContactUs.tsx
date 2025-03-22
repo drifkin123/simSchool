@@ -1,9 +1,13 @@
 import React from 'react';
 import '../styles/ContactUs.css';
+import '../styles/animations.css';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 const ContactUs = () => {
+  const [ref, isVisible] = useIntersectionObserver<HTMLElement>();
+
   return (
-    <section className="contact-section">
+    <section ref={ref} className={`contact-section fade-in-up ${isVisible ? 'visible' : ''}`}>
       <div className="container">
         <h2 className="section-title">Virtual Students. Real Results. Infinite Learning.</h2>
         <p className="section-description">

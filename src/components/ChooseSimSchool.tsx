@@ -1,7 +1,10 @@
 import React from 'react';
 import '../styles/ChooseSimSchool.css';
+import '../styles/animations.css';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 const ChooseSimSchool = () => {
+  const [ref, isVisible] = useIntersectionObserver<HTMLElement>();
   const benefits = [
     {
       image: '/ChooseSimSchool/tested.png',
@@ -38,7 +41,7 @@ const ChooseSimSchool = () => {
   ];
 
   return (
-    <section className="choose-section">
+    <section ref={ref} className={`choose-section fade-in-up ${isVisible ? 'visible' : ''}`}>
       <div className="container">
         <h2 className="section-title">Why Choose SimSchool</h2>
         <div className="benefits-grid">
