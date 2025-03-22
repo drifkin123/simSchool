@@ -53,6 +53,12 @@
   border-radius: 1rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   padding: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .benefit-image {
@@ -61,6 +67,7 @@
   object-fit: contain;
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
   border-radius: 0.75rem;
+  transition: filter 0.3s ease;
 }
 
 .benefit-title {
