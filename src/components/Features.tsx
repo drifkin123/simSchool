@@ -11,9 +11,10 @@ interface Feature {
 interface FeaturesProps {
   title: string;
   features: Feature[];
+  className?: string;
 }
 
-const Features: React.FC<FeaturesProps> = ({ title, features }) => {
+const Features: React.FC<FeaturesProps> = ({ title, features, className }) => {
   const [activeFeature, setActiveFeature] = useState(0);
   const [ref, isVisible] = useIntersectionObserver<HTMLElement>();
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -42,7 +43,7 @@ const Features: React.FC<FeaturesProps> = ({ title, features }) => {
   };
 
   return (
-    <section ref={ref} className={`features-section fade-in-up ${isVisible ? 'visible' : ''}`}>
+    <section ref={ref} className={`features-section fade-in-up ${isVisible ? 'visible' : ''} ${className || ''}`}>
       <div className="container">
         {renderTitle()}
         <div className="feature-buttons">

@@ -6,6 +6,9 @@ import LoopingLogos from './components/LoopingLogos';
 import ChooseSimSchool from './components/ChooseSimSchool';
 import ContactUs from './components/ContactUs';
 import Features from './components/Features';
+import IndustriesSection from './components/IndustriesSection';
+import CTASection from './components/CTASection';
+import NumbersSection from './components/NumbersSection';
 
 function App() {
   const learnerFeatures = [
@@ -59,7 +62,11 @@ function App() {
         <Features 
           title="What <strong>Institutions</strong> do with simSchool"
           features={institutionFeatures}
+          className="white-bg"
         />
+        <IndustriesSection />
+        <CTASection />
+        <NumbersSection />
       </main>
     </div>
   );

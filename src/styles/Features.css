@@ -5,6 +5,14 @@
   transform: translateY(50px);
 }
 
+.features-section.white-bg {
+  background-color: white;
+}
+
+.features-section:nth-of-type(2) {
+  background-color: white;
+}
+
 .features-section.visible {
   animation: fadeInUp 0.6s ease forwards;
 }
