@@ -1,5 +1,7 @@
 import React from 'react';
 import '../styles/IndustriesSection.css';
+import '../styles/animations.css';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 const industries = [
   {
@@ -29,8 +31,10 @@ const industries = [
 ];
 
 const IndustriesSection: React.FC = () => {
+  const [ref, isVisible] = useIntersectionObserver<HTMLElement>();
+
   return (
-    <section className="industries-section">
+    <section ref={ref} className={`industries-section fade-in-up ${isVisible ? 'visible' : ''}`}>
       <div className="industries-container">
         <h2 className="industries-title">Where simSchool Works</h2>
         <p className="industries-description">

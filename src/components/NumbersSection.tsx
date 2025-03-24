@@ -1,5 +1,7 @@
 import React from 'react';
 import '../styles/NumbersSection.css';
+import '../styles/animations.css';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 const stats = [
   {
@@ -21,8 +23,10 @@ const stats = [
 ];
 
 const NumbersSection: React.FC = () => {
+  const [ref, isVisible] = useIntersectionObserver<HTMLElement>();
+
   return (
-    <section className="numbers-section">
+    <section ref={ref} className={`numbers-section fade-in-up ${isVisible ? 'visible' : ''}`}>
       <div className="numbers-container">
         <div className="numbers-grid">
           {stats.map((stat, index) => (

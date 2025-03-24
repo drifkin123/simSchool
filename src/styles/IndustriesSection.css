@@ -1,6 +1,12 @@
 .industries-section {
   padding: 80px 0;
   background-color: #f8f9fa;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.industries-section.visible {
+  animation: fadeInUp 0.6s ease forwards;
 }
 
 .industries-container {
