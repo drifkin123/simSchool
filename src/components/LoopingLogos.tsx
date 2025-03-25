@@ -1,4 +1,3 @@
-import React from 'react';
 import '../styles/LoopingLogos.css';
 import '../styles/animations.css';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
