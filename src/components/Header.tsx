@@ -8,20 +8,18 @@ enum NavOptions {
   Resources = 'resources'
 }
 
-interface HeaderState {
+interface State {
   isMenuOpen: boolean;
   activeDropdowns: NavOptions[];
   isMobile: boolean;
 }
 
-
-
-class Header extends Component<{}, HeaderState> {
+class Header extends Component<{}, State> {
   constructor(props: {}) {
     super(props);
     this.state = {
       isMenuOpen: false,
-      activeDropdowns: [NavOptions.Platform],
+      activeDropdowns: [],
       isMobile: window.innerWidth <= 768
     };
   }
@@ -40,7 +38,8 @@ class Header extends Component<{}, HeaderState> {
 
   toggleMenu = () => {
     this.setState(prevState => ({
-      isMenuOpen: !prevState.isMenuOpen
+      isMenuOpen: !prevState.isMenuOpen,
+      activeDropdowns: [],
     }));
   };
 
@@ -85,7 +84,7 @@ class Header extends Component<{}, HeaderState> {
           <nav className={classNames(styles.navMenu, { [styles.open]: isMenuOpen })}>
             <ul>
               <li
-                className={`${styles.dropdownTrigger} ${activeDropdowns.includes(NavOptions.Platform) ? styles.active : ''}`}
+                className={classNames(styles.dropdownTrigger, { [styles.active]: activeDropdowns.includes(NavOptions.Platform) })}
                 onMouseEnter={() => this.handleDropdownEnter(NavOptions.Platform)}
                 onMouseLeave={this.handleDropdownLeave}
               >
@@ -123,7 +122,7 @@ class Header extends Component<{}, HeaderState> {
                 </div>
               </li>
               <li
-                className={`${styles.dropdownTrigger} ${activeDropdowns.includes(NavOptions.Pricing) ? styles.active : ''}`}
+                className={classNames(styles.dropdownTrigger, { [styles.active]: activeDropdowns.includes(NavOptions.Pricing) })}
                 onMouseEnter={() => this.handleDropdownEnter(NavOptions.Pricing)}
                 onMouseLeave={this.handleDropdownLeave}
               >
@@ -139,7 +138,7 @@ class Header extends Component<{}, HeaderState> {
                   Pricing
                   <span className={styles.dropdownArrow}></span>
                 </button>
-                <div className={`${styles.dropdownMenu} ${activeDropdowns.includes(NavOptions.Pricing) ? styles.active : ''}`}>
+                <div className={classNames(styles.dropdownMenu, { [styles.active]: activeDropdowns.includes(NavOptions.Pricing) })}>
                   <ul className={styles.dropdownSectionList}>
                     <li><a className={styles.dropdownItem} href="#teacher-prep">Teacher Preparation</a></li>
                     <li><a className={styles.dropdownItem} href="#professional-dev">Professional Development</a></li>
@@ -149,7 +148,7 @@ class Header extends Component<{}, HeaderState> {
                 </div>
               </li>
               <li
-                className={`${styles.dropdownTrigger} ${activeDropdowns.includes(NavOptions.Resources) ? styles.active : ''}`}
+                className={classNames(styles.dropdownTrigger, { [styles.active]: activeDropdowns.includes(NavOptions.Resources) })}
                 onMouseEnter={() => this.handleDropdownEnter(NavOptions.Resources)}
                 onMouseLeave={this.handleDropdownLeave}
               >
@@ -165,7 +164,7 @@ class Header extends Component<{}, HeaderState> {
                   Resources
                   <span className={styles.dropdownArrow}></span>
                 </button>
-                <div className={`${styles.dropdownMenu} ${activeDropdowns.includes(NavOptions.Resources) ? styles.active : ''}`}>
+                <div className={classNames(styles.dropdownMenu, { [styles.active]: activeDropdowns.includes(NavOptions.Resources) })}>
                   <ul className={styles.dropdownSectionList}>
                     <li><a className={styles.dropdownItem} href="#content-catalog">Content Catalog</a></li>
                     <li><a className={styles.dropdownItem} href="#tips-tools">Tips and Tools</a></li>
