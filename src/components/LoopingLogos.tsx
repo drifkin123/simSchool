@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../styles/LoopingLogos.module.css';
 import '../styles/animations.css';
 import withIntersectionObserver from '../hocs/withIntersectionObserver';
+import classNames from 'classnames';
 
 interface Props { }
 
@@ -25,20 +26,15 @@ class LoopingLogos extends React.Component<Props & InjectedProps> {
     const { isVisible } = this.props;
 
     return (
-      <div className={`fade-in-up ${isVisible ? 'visible' : ''}`}>
+      <div className={classNames('fade-in-up', { visible: isVisible })}>
         <h3 className={styles.title}>The SimSchool Global Community</h3>
 
         <div className={styles.container}>
           <div className={styles.innerContainer}>
             <article className={styles.wrapper}>
               <div className={styles.marquee}>
-                <div className={styles.marqueeGroup}>
-                  {this.logos}
-                </div>
-
-                <div aria-hidden="true" className={styles.marqueeGroup}>
-                  {this.logos}
-                </div>
+                <div className={styles.marqueeGroup}>{this.logos}</div>
+                <div aria-hidden="true" className={styles.marqueeGroup}>{this.logos}</div>
               </div>
             </article>
           </div>
