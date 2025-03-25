@@ -1,24 +1,33 @@
 import React from 'react';
-import '../styles/ContactUs.css';
+import styles from '../styles/ContactUs.module.css';
 import '../styles/animations.css';
-import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
+import withIntersectionObserver from '../hocs/withIntersectionObserver';
+import classNames from 'classnames';
 
-const ContactUs = () => {
-  const [ref, isVisible] = useIntersectionObserver<HTMLElement>();
+interface Props { }
 
-  return (
-    <section ref={ref} className={`contact-section fade-in-up ${isVisible ? 'visible' : ''}`}>
-      <div className="container">
-        <h2 className="section-title">Virtual Students. Real Results. Infinite Learning.</h2>
-        <p className="section-description">
-          Give your pre-and in-service educators access to just-in-time, real-time decision-making practice and personalized feedback that improves teaching effectiveness and reflective practice at all stages of the career journey.
-        </p>
-        <div className="contact-button-container">
-          <button className="contact-button">Contact Us</button>
+interface InjectedProps {
+  isVisible: boolean;
+}
+
+class ContactUs extends React.Component<Props & InjectedProps> {
+  render() {
+    const { isVisible } = this.props;
+
+    return (
+      <section className={classNames(styles.contactSection, 'fade-in-up', { visible: isVisible })}>
+        <div className={styles.container}>
+          <h2 className={styles.sectionTitle}>Virtual Students. Real Results. Infinite Learning.</h2>
+          <p className={styles.sectionDescription}>
+            Give your pre-and in-service educators access to just-in-time, real-time decision-making practice and personalized feedback that improves teaching effectiveness and reflective practice at all stages of the career journey.
+          </p>
+          <div className={styles.contactButtonContainer}>
+            <button className={styles.contactButton}>Contact Us</button>
+          </div>
         </div>
-      </div>
-    </section>
-  );
-};
+      </section>
+    );
+  }
+}
 
-export default ContactUs; 
+export default withIntersectionObserver(ContactUs); 
