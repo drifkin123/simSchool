@@ -1,18 +1,15 @@
 import React from 'react';
 import styles from '../styles/LoopingLogos.module.css';
 import '../styles/animations.css';
-
-// example here: https://www.smashingmagazine.com/2024/04/infinite-scrolling-logos-html-css/
+import withIntersectionObserver from '../hocs/withIntersectionObserver';
 
 interface Props { }
 
-interface State {
+interface InjectedProps {
   isVisible: boolean;
 }
 
-class LoopingLogos extends React.Component<Props, State> {
-  private containerRef: React.RefObject<HTMLDivElement>;
-  private observer: IntersectionObserver | null = null;
+class LoopingLogos extends React.Component<Props & InjectedProps> {
   private logos = [
     <img src="/logos/mcdonalds.svg" alt="McDonald's" key="McDonald's" />,
     <img src="/logos/jordan.svg" alt="Jordan" key="Jordan" />,
@@ -22,42 +19,13 @@ class LoopingLogos extends React.Component<Props, State> {
     <img src="/logos/honda.svg" alt="Honda" key="Honda" />,
     <img src="/logos/notion.svg" alt="Notion" key="Notion" />,
     <img src="/logos/hulu.svg" alt="Hulu" key="Hulu" />,
-  ]
-
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      isVisible: false
-    };
-    this.containerRef = React.createRef();
-  }
-
-  componentDidMount() {
-    this.observer = new IntersectionObserver(
-      ([entry]) => {
-        this.setState({ isVisible: entry.isIntersecting });
-      },
-      {
-        threshold: 0.1
-      }
-    );
-
-    if (this.containerRef.current) {
-      this.observer.observe(this.containerRef.current);
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.observer && this.containerRef.current) {
-      this.observer.unobserve(this.containerRef.current);
-    }
-  }
+  ];
 
   render() {
-    const { isVisible } = this.state;
+    const { isVisible } = this.props;
 
     return (
-      <div ref={this.containerRef} className={`fade-in-up ${isVisible ? 'visible' : ''}`}>
+      <div className={`fade-in-up ${isVisible ? 'visible' : ''}`}>
         <h3 className={styles.title}>The SimSchool Global Community</h3>
 
         <div className={styles.container}>
@@ -90,4 +58,4 @@ class LoopingLogos extends React.Component<Props, State> {
   }
 }
 
-export default LoopingLogos;
+export default withIntersectionObserver(LoopingLogos);
