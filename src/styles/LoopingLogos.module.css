@@ -23,6 +23,7 @@
 }
 
 .logoLink {
+  margin-bottom: 2rem;
   color: #2563eb;
   font-size: 1.125rem;
   font-weight: 500;
@@ -122,7 +123,7 @@
   }
 }
 
-.marquee svg {
+.marquee img {
   display: grid;
   place-items: center;
   width: var(--size);
@@ -132,94 +133,3 @@
   padding: calc(var(--size) / 10);
   border-radius: 0.5rem;
 }
-
-.marquee--vertical {
-  --mask-direction: to bottom;
-}
-
-.marquee--vertical,
-.marquee--vertical .marqueeGroup {
-  flex-direction: column;
-}
-
-.marquee--vertical .marqueeGroup {
-  animation-name: scroll-y;
-}
-
-.marquee--reverse .marqueeGroup {
-  animation-direction: reverse;
-  animation-delay: -3s;
-}
-
-@keyframes scroll-y {
-  from {
-    transform: translateY(var(--scroll-start));
-  }
-
-  to {
-    transform: translateY(var(--scroll-end));
-  }
-}
-
-.wrapper--vertical {
-  flex-direction: row;
-  height: 100vh;
-}
-
-.toggle {
-  --size: 3rem;
-  position: relative;
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  width: var(--size);
-  height: var(--size);
-  font: inherit;
-  text-align: center;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  border-radius: 50%;
-  color: inherit;
-  background-color: #f8fafc;
-  z-index: 1;
-}
-
-.toggle:focus-visible {
-  box-shadow: 0 0 0 2px #1e293b;
-}
-
-.toggle span {
-  position: absolute;
-  display: inline-block;
-  top: 50%;
-  left: calc(100% + 0.4em);
-  width: fit-content;
-  white-space: nowrap;
-  transform: translateY(-50%);
-  animation: fade 400ms 4s ease-out forwards;
-  user-select: none;
-}
-
-.toggle svg {
-  --size: 1.5rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: var(--size);
-  height: var(--size);
-  fill: currentcolor;
-  transform: translate(-50%, -50%);
-  transition: transform 300ms cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.toggle--vertical svg {
-  transform: translate(-50%, -50%) rotate(-90deg);
-}
-
-@keyframes fade {
-  to {
-    opacity: 0;
-    visibility: hidden;
-  }
-} 
