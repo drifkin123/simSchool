@@ -1,0 +1,297 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+.logo a {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  text-decoration: none;
+}
+
+.hamburgerMenu {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  z-index: 1001;
+}
+
+.hamburgerLine {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #1e293b;
+  position: absolute;
+  left: 0;
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+
+.hamburgerLine:nth-child(1) {
+  top: 6px;
+}
+
+.hamburgerLine:nth-child(2) {
+  top: 11px;
+}
+
+.hamburgerLine:nth-child(3) {
+  top: 16px;
+}
+
+.hamburgerLine.open:nth-child(1) {
+  transform: rotate(45deg);
+  top: 11px;
+  background: #1e293b;
+}
+
+.hamburgerLine.open:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerLine.open:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 11px;
+  background: #1e293b;
+}
+
+.navMenu {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 1rem;
+}
+
+.navMenu ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdownTrigger {
+  position: relative;
+  margin: 0 1rem;
+}
+
+.dropdownTrigger a {
+  color: #1e293b;
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.dropdownArrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.5rem;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #1e293b;
+  transition: transform 0.3s ease;
+}
+
+.dropdownTrigger:hover .dropdownArrow {
+  transform: rotate(180deg);
+}
+
+.dropdownTrigger.active .dropdownArrow {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.dropdownMenu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdownSection {
+  margin-bottom: 0.75rem;
+  text-align: left;
+  padding-left: 0;
+}
+
+.dropdownSection:last-child {
+  margin-bottom: 0;
+}
+
+.dropdownSection h3 {
+  color: #64748b;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  text-align: left;
+  padding-left: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dropdownSection ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdownSection ul li {
+  margin: 0;
+}
+
+.dropdownSection ul li a {
+  color: #1e293b;
+  text-decoration: none;
+  font-size: 0.875rem;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  transition: all 0.2s ease;
+  text-align: left;
+  border-radius: 4px;
+  font-weight: 400;
+}
+
+.dropdownSection ul li a:hover {
+  color: #2563eb;
+  background: #f8fafc;
+}
+
+.headerButtons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btnOutline {
+  color: #2563eb;
+  border: 1px solid #2563eb;
+}
+
+.btnOutline:hover {
+  background: #2563eb;
+  color: white;
+}
+
+.btnPrimary {
+  background: #2563eb;
+  color: white;
+}
+
+.btnPrimary:hover {
+  background: #1d4ed8;
+}
+
+@media (max-width: 768px) {
+  .hamburgerMenu {
+    display: block;
+  }
+
+  .navMenu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background: white;
+    padding: 5rem 1rem 1rem;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    transition: right 0.3s ease;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+  }
+
+  .navMenu.open {
+    right: 0;
+  }
+
+  .navMenu ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .dropdownTrigger {
+    margin: 0.5rem 0;
+    width: 100%;
+  }
+
+  .dropdownMenu {
+    position: static;
+    box-shadow: none;
+    padding: 0.5rem 0 0.5rem 0;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .dropdownMenu.active {
+    opacity: 1;
+    max-height: 500px;
+  }
+
+  .dropdownSection ul li a {
+    padding: 0.75rem 0;
+  }
+
+  .headerButtons {
+    display: none;
+  }
+
+  .dropdownTrigger:hover .dropdownArrow {
+    transform: none;
+  }
+  
+  .dropdownTrigger.active .dropdownArrow {
+    transform: rotate(180deg);
+  }
+} 

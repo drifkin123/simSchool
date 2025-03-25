@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import '../styles/Header.css';
+import { Component } from 'react';
+import styles from '../styles/Header.module.css';
+import classNames from 'classnames';
 
 interface HeaderState {
   isMenuOpen: boolean;
@@ -61,26 +62,26 @@ class Header extends Component<{}, HeaderState> {
     const { isMenuOpen, activeDropdown, mobileDropdowns, isMobile } = this.state;
 
     return (
-      <header className="header">
-        <div className="container header-container">
-          <div className="logo">
+      <header className={styles.header}>
+        <div className={classNames(styles.container, styles.headerContainer)}>
+          <div className={styles.logo}>
             <a href="/">SimSchool</a>
           </div>
-          
-          <button className="hamburger-menu" onClick={this.toggleMenu}>
-            <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
-            <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
-            <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
+
+          <button className={styles.hamburgerMenu} onClick={this.toggleMenu}>
+            <span className={`${styles.hamburgerLine} ${isMenuOpen ? styles.open : ''}`}></span>
+            <span className={`${styles.hamburgerLine} ${isMenuOpen ? styles.open : ''}`}></span>
+            <span className={`${styles.hamburgerLine} ${isMenuOpen ? styles.open : ''}`}></span>
           </button>
 
-          <nav className={`nav-menu ${isMenuOpen ? 'open' : ''}`}>
+          <nav className={`${styles.navMenu} ${isMenuOpen ? styles.open : ''}`}>
             <ul>
-              <li 
-                className={`dropdown-trigger ${mobileDropdowns.includes('platform') ? 'active' : ''}`}
+              <li
+                className={`${styles.dropdownTrigger} ${mobileDropdowns.includes('platform') ? styles.active : ''}`}
                 onMouseEnter={() => this.handleDropdownEnter('platform')}
                 onMouseLeave={this.handleDropdownLeave}
               >
-                <a 
+                <a
                   href="#platform"
                   onClick={(e) => {
                     if (isMobile) {
@@ -90,10 +91,10 @@ class Header extends Component<{}, HeaderState> {
                   }}
                 >
                   Platform
-                  <span className="dropdown-arrow"></span>
+                  <span className={styles.dropdownArrow}></span>
                 </a>
-                <div className={`dropdown-menu ${(!isMobile && activeDropdown === 'platform') || (isMobile && mobileDropdowns.includes('platform')) ? 'active' : ''}`}>
-                  <div className="dropdown-section">
+                <div className={`${styles.dropdownMenu} ${(!isMobile && activeDropdown === 'platform') || (isMobile && mobileDropdowns.includes('platform')) ? styles.active : ''}`}>
+                  <div className={styles.dropdownSection}>
                     <h3>About simSchool</h3>
                     <ul>
                       <li><a href="#overview">Overview</a></li>
@@ -101,7 +102,7 @@ class Header extends Component<{}, HeaderState> {
                       <li><a href="#research">Research</a></li>
                     </ul>
                   </div>
-                  <div className="dropdown-section">
+                  <div className={styles.dropdownSection}>
                     <h3>Use Cases</h3>
                     <ul>
                       <li><a href="#cte">Career Technical Education</a></li>
@@ -113,12 +114,12 @@ class Header extends Component<{}, HeaderState> {
                   </div>
                 </div>
               </li>
-              <li 
-                className={`dropdown-trigger ${mobileDropdowns.includes('pricing') ? 'active' : ''}`}
+              <li
+                className={`${styles.dropdownTrigger} ${mobileDropdowns.includes('pricing') ? styles.active : ''}`}
                 onMouseEnter={() => this.handleDropdownEnter('pricing')}
                 onMouseLeave={this.handleDropdownLeave}
               >
-                <a 
+                <a
                   href="#pricing"
                   onClick={(e) => {
                     if (isMobile) {
@@ -128,9 +129,9 @@ class Header extends Component<{}, HeaderState> {
                   }}
                 >
                   Pricing
-                  <span className="dropdown-arrow"></span>
+                  <span className={styles.dropdownArrow}></span>
                 </a>
-                <div className={`dropdown-menu ${(!isMobile && activeDropdown === 'pricing') || (isMobile && mobileDropdowns.includes('pricing')) ? 'active' : ''}`}>
+                <div className={`${styles.dropdownMenu} ${(!isMobile && activeDropdown === 'pricing') || (isMobile && mobileDropdowns.includes('pricing')) ? styles.active : ''}`}>
                   <ul>
                     <li><a href="#teacher-prep">Teacher Preparation</a></li>
                     <li><a href="#professional-dev">Professional Development</a></li>
@@ -139,12 +140,12 @@ class Header extends Component<{}, HeaderState> {
                   </ul>
                 </div>
               </li>
-              <li 
-                className={`dropdown-trigger ${mobileDropdowns.includes('resources') ? 'active' : ''}`}
+              <li
+                className={`${styles.dropdownTrigger} ${mobileDropdowns.includes('resources') ? styles.active : ''}`}
                 onMouseEnter={() => this.handleDropdownEnter('resources')}
                 onMouseLeave={this.handleDropdownLeave}
               >
-                <a 
+                <a
                   href="#resources"
                   onClick={(e) => {
                     if (isMobile) {
@@ -154,9 +155,9 @@ class Header extends Component<{}, HeaderState> {
                   }}
                 >
                   Resources
-                  <span className="dropdown-arrow"></span>
+                  <span className={styles.dropdownArrow}></span>
                 </a>
-                <div className={`dropdown-menu ${(!isMobile && activeDropdown === 'resources') || (isMobile && mobileDropdowns.includes('resources')) ? 'active' : ''}`}>
+                <div className={`${styles.dropdownMenu} ${(!isMobile && activeDropdown === 'resources') || (isMobile && mobileDropdowns.includes('resources')) ? styles.active : ''}`}>
                   <ul>
                     <li><a href="#content-catalog">Content Catalog</a></li>
                     <li><a href="#tips-tools">Tips and Tools</a></li>
@@ -166,9 +167,9 @@ class Header extends Component<{}, HeaderState> {
               </li>
             </ul>
           </nav>
-          <div className="header-buttons">
-            <a href="/login" className="btn btn-outline">User Login</a>
-            <a href="/demo" className="btn btn-primary">Book a Demo</a>
+          <div className={styles.headerButtons}>
+            <a href="/login" className={`${styles.btn} ${styles.btnOutline}`}>User Login</a>
+            <a href="/demo" className={`${styles.btn} ${styles.btnPrimary}`}>Book a Demo</a>
           </div>
         </div>
       </header>
