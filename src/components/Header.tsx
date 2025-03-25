@@ -2,20 +2,26 @@ import { Component } from 'react';
 import styles from '../styles/Header.module.css';
 import classNames from 'classnames';
 
+enum NavOptions {
+  Platform = 'platform',
+  Pricing = 'pricing',
+  Resources = 'resources'
+}
+
 interface HeaderState {
   isMenuOpen: boolean;
-  activeDropdown: string | null;
-  mobileDropdowns: string[];
+  activeDropdowns: NavOptions[];
   isMobile: boolean;
 }
+
+
 
 class Header extends Component<{}, HeaderState> {
   constructor(props: {}) {
     super(props);
     this.state = {
       isMenuOpen: false,
-      activeDropdown: null,
-      mobileDropdowns: [],
+      activeDropdowns: [NavOptions.Platform],
       isMobile: window.innerWidth <= 768
     };
   }
@@ -38,28 +44,28 @@ class Header extends Component<{}, HeaderState> {
     }));
   };
 
-  handleDropdownEnter = (dropdown: string) => {
+  handleDropdownEnter = (dropdown: NavOptions) => {
     if (!this.state.isMobile) {
-      this.setState({ activeDropdown: dropdown });
+      this.setState({ activeDropdowns: [dropdown] });
     }
   };
 
   handleDropdownLeave = () => {
     if (!this.state.isMobile) {
-      this.setState({ activeDropdown: null });
+      this.setState({ activeDropdowns: [] });
     }
   };
 
-  toggleMobileDropdown = (dropdown: string) => {
+  toggleMobileDropdown = (dropdown: NavOptions) => {
     this.setState(prevState => ({
-      mobileDropdowns: prevState.mobileDropdowns.includes(dropdown)
-        ? prevState.mobileDropdowns.filter(d => d !== dropdown)
-        : [...prevState.mobileDropdowns, dropdown]
+      activeDropdowns: prevState.activeDropdowns.includes(dropdown)
+        ? prevState.activeDropdowns.filter(d => d !== dropdown)
+        : [...prevState.activeDropdowns, dropdown]
     }));
   };
 
   render() {
-    const { isMenuOpen, activeDropdown, mobileDropdowns, isMobile } = this.state;
+    const { isMenuOpen, activeDropdowns, isMobile } = this.state;
 
     return (
       <header className={styles.header}>
@@ -69,99 +75,101 @@ class Header extends Component<{}, HeaderState> {
           </div>
 
           <button className={styles.hamburgerMenu} onClick={this.toggleMenu}>
-            <span className={`${styles.hamburgerLine} ${isMenuOpen ? styles.open : ''}`}></span>
-            <span className={`${styles.hamburgerLine} ${isMenuOpen ? styles.open : ''}`}></span>
-            <span className={`${styles.hamburgerLine} ${isMenuOpen ? styles.open : ''}`}></span>
+            {[...new Array(3)].map((_, idx) =>
+              <span
+                key={idx}
+                className={classNames(styles.hamburgerLine, { [styles.open]: isMenuOpen })}
+              />)}
           </button>
 
-          <nav className={`${styles.navMenu} ${isMenuOpen ? styles.open : ''}`}>
+          <nav className={classNames(styles.navMenu, { [styles.open]: isMenuOpen })}>
             <ul>
               <li
-                className={`${styles.dropdownTrigger} ${mobileDropdowns.includes('platform') ? styles.active : ''}`}
-                onMouseEnter={() => this.handleDropdownEnter('platform')}
+                className={`${styles.dropdownTrigger} ${activeDropdowns.includes(NavOptions.Platform) ? styles.active : ''}`}
+                onMouseEnter={() => this.handleDropdownEnter(NavOptions.Platform)}
                 onMouseLeave={this.handleDropdownLeave}
               >
-                <a
-                  href="#platform"
+                <button
+                  className={classNames(styles.parentItem, { [styles.isMobile]: isMobile })}
                   onClick={(e) => {
                     if (isMobile) {
                       e.preventDefault();
-                      this.toggleMobileDropdown('platform');
+                      this.toggleMobileDropdown(NavOptions.Platform);
                     }
                   }}
                 >
                   Platform
                   <span className={styles.dropdownArrow}></span>
-                </a>
-                <div className={`${styles.dropdownMenu} ${(!isMobile && activeDropdown === 'platform') || (isMobile && mobileDropdowns.includes('platform')) ? styles.active : ''}`}>
+                </button>
+                <div className={`${styles.dropdownMenu} ${activeDropdowns.includes(NavOptions.Platform) ? styles.active : ''}`}>
                   <div className={styles.dropdownSection}>
                     <h3>About simSchool</h3>
-                    <ul>
-                      <li><a href="#overview">Overview</a></li>
-                      <li><a href="#features">Features</a></li>
-                      <li><a href="#research">Research</a></li>
+                    <ul className={styles.dropdownSectionList}>
+                      <li><a className={styles.dropdownItem} href="#overview">Overview</a></li>
+                      <li><a className={styles.dropdownItem} href="#features">Features</a></li>
+                      <li><a className={styles.dropdownItem} href="#research">Research</a></li>
                     </ul>
                   </div>
                   <div className={styles.dropdownSection}>
                     <h3>Use Cases</h3>
-                    <ul>
-                      <li><a href="#cte">Career Technical Education</a></li>
-                      <li><a href="#educator-prep">Educator Preparation</a></li>
-                      <li><a href="#field-work">Field Work</a></li>
-                      <li><a href="#professional-dev">Professional Development</a></li>
-                      <li><a href="#research">Research</a></li>
+                    <ul className={styles.dropdownSectionList}>
+                      <li><a className={styles.dropdownItem} href="#cte">Career Technical Education</a></li>
+                      <li><a className={styles.dropdownItem} href="#educator-prep">Educator Preparation</a></li>
+                      <li><a className={styles.dropdownItem} href="#field-work">Field Work</a></li>
+                      <li><a className={styles.dropdownItem} href="#professional-dev">Professional Development</a></li>
+                      <li><a className={styles.dropdownItem} href="#research">Research</a></li>
                     </ul>
                   </div>
                 </div>
               </li>
               <li
-                className={`${styles.dropdownTrigger} ${mobileDropdowns.includes('pricing') ? styles.active : ''}`}
-                onMouseEnter={() => this.handleDropdownEnter('pricing')}
+                className={`${styles.dropdownTrigger} ${activeDropdowns.includes(NavOptions.Pricing) ? styles.active : ''}`}
+                onMouseEnter={() => this.handleDropdownEnter(NavOptions.Pricing)}
                 onMouseLeave={this.handleDropdownLeave}
               >
-                <a
-                  href="#pricing"
+                <button
+                  className={classNames(styles.parentItem, { [styles.isMobile]: isMobile })}
                   onClick={(e) => {
                     if (isMobile) {
                       e.preventDefault();
-                      this.toggleMobileDropdown('pricing');
+                      this.toggleMobileDropdown(NavOptions.Pricing);
                     }
                   }}
                 >
                   Pricing
                   <span className={styles.dropdownArrow}></span>
-                </a>
-                <div className={`${styles.dropdownMenu} ${(!isMobile && activeDropdown === 'pricing') || (isMobile && mobileDropdowns.includes('pricing')) ? styles.active : ''}`}>
-                  <ul>
-                    <li><a href="#teacher-prep">Teacher Preparation</a></li>
-                    <li><a href="#professional-dev">Professional Development</a></li>
-                    <li><a href="#cte">Career Technical Education</a></li>
-                    <li><a href="#research">Research</a></li>
+                </button>
+                <div className={`${styles.dropdownMenu} ${activeDropdowns.includes(NavOptions.Pricing) ? styles.active : ''}`}>
+                  <ul className={styles.dropdownSectionList}>
+                    <li><a className={styles.dropdownItem} href="#teacher-prep">Teacher Preparation</a></li>
+                    <li><a className={styles.dropdownItem} href="#professional-dev">Professional Development</a></li>
+                    <li><a className={styles.dropdownItem} href="#cte">Career Technical Education</a></li>
+                    <li><a className={styles.dropdownItem} href="#research">Research</a></li>
                   </ul>
                 </div>
               </li>
               <li
-                className={`${styles.dropdownTrigger} ${mobileDropdowns.includes('resources') ? styles.active : ''}`}
-                onMouseEnter={() => this.handleDropdownEnter('resources')}
+                className={`${styles.dropdownTrigger} ${activeDropdowns.includes(NavOptions.Resources) ? styles.active : ''}`}
+                onMouseEnter={() => this.handleDropdownEnter(NavOptions.Resources)}
                 onMouseLeave={this.handleDropdownLeave}
               >
-                <a
-                  href="#resources"
+                <button
+                  className={classNames(styles.parentItem, { [styles.isMobile]: isMobile })}
                   onClick={(e) => {
                     if (isMobile) {
                       e.preventDefault();
-                      this.toggleMobileDropdown('resources');
+                      this.toggleMobileDropdown(NavOptions.Resources);
                     }
                   }}
                 >
                   Resources
                   <span className={styles.dropdownArrow}></span>
-                </a>
-                <div className={`${styles.dropdownMenu} ${(!isMobile && activeDropdown === 'resources') || (isMobile && mobileDropdowns.includes('resources')) ? styles.active : ''}`}>
-                  <ul>
-                    <li><a href="#content-catalog">Content Catalog</a></li>
-                    <li><a href="#tips-tools">Tips and Tools</a></li>
-                    <li><a href="#video-howtos">Video How-tos</a></li>
+                </button>
+                <div className={`${styles.dropdownMenu} ${activeDropdowns.includes(NavOptions.Resources) ? styles.active : ''}`}>
+                  <ul className={styles.dropdownSectionList}>
+                    <li><a className={styles.dropdownItem} href="#content-catalog">Content Catalog</a></li>
+                    <li><a className={styles.dropdownItem} href="#tips-tools">Tips and Tools</a></li>
+                    <li><a className={styles.dropdownItem} href="#video-howtos">Video How-tos</a></li>
                   </ul>
                 </div>
               </li>

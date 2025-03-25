@@ -95,15 +95,21 @@
 .dropdownTrigger {
   position: relative;
   margin: 0 1rem;
+  text-decoration: none;
 }
 
-.dropdownTrigger a {
+.parentItem {
+  all: unset;
   color: #1e293b;
   text-decoration: none;
   font-weight: 500;
   display: flex;
   align-items: center;
   padding: 0.5rem 0;
+}
+
+.parentItem.isMobile {
+  cursor: pointer;
 }
 
 .dropdownArrow {
@@ -132,7 +138,7 @@
   background: white;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  min-width: 200px;
+  min-width: 250px;
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
@@ -178,19 +184,24 @@
   margin: 0;
 }
 
-.dropdownSection ul li a {
+.dropdownSectionList {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdownItem {
   color: #1e293b;
   text-decoration: none;
   font-size: 0.875rem;
   display: block;
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 1rem;
   transition: all 0.2s ease;
   text-align: left;
   border-radius: 4px;
   font-weight: 400;
 }
 
-.dropdownSection ul li a:hover {
+.dropdownItem:hover {
   color: #2563eb;
   background: #f8fafc;
 }
@@ -279,7 +290,7 @@
     max-height: 500px;
   }
 
-  .dropdownSection ul li a {
+  .dropdownItem {
     padding: 0.75rem 0;
   }
 
@@ -290,8 +301,8 @@
   .dropdownTrigger:hover .dropdownArrow {
     transform: none;
   }
-  
+
   .dropdownTrigger.active .dropdownArrow {
     transform: rotate(180deg);
   }
-} 
+}
