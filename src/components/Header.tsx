@@ -70,7 +70,7 @@ class Header extends Component<{}, State> {
       <header className={styles.header}>
         <div className={classNames(styles.container, styles.headerContainer)}>
           <div className={styles.logo}>
-            <a href="/">SimSchool</a>
+            <a href="/">simSchool</a>
           </div>
 
           <button className={styles.hamburgerMenu} onClick={this.toggleMenu}>

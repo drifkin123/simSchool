@@ -91,10 +91,6 @@
   padding: 0;
 }
 
-.navMenu > ul > li:not(:last-child) {
-  border-bottom: 1px solid #cccccc;
-}
-
 .dropdownTrigger {
   position: relative;
   margin: 0 1rem;
@@ -216,6 +212,11 @@
 }
 
 @media (max-width: 768px) {
+
+  .navMenu>ul>li:not(:last-child) {
+    border-bottom: 1px solid #cccccc;
+  }
+
   .hamburgerMenu {
     display: block;
   }
@@ -279,11 +280,11 @@
   }
 
   .mobileButtons a {
-    width:100%;
+    width: 100%;
   }
 
   .mobileLogin {
-    width:fit-content;
+    width: fit-content;
   }
 
   .dropdownTrigger:hover .dropdownArrow {

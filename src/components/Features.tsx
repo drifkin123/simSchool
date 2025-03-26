@@ -21,6 +21,7 @@ interface State {
   activeFeatureButton: number;
   activeFeature: number;
   isTransitioning: boolean;
+  isMobile: boolean;
 }
 
 class Features extends React.Component<Props & IntersectionObserverProps, State> {
@@ -28,6 +29,7 @@ class Features extends React.Component<Props & IntersectionObserverProps, State>
     activeFeatureButton: 0,
     activeFeature: 0,
     isTransitioning: false,
+    isMobile: window.innerWidth <= 768
   };
 
   handleFeatureChange = (index: number) => {
@@ -41,11 +43,21 @@ class Features extends React.Component<Props & IntersectionObserverProps, State>
     }, 200); // Match this with CSS transition duration
   };
 
+  componentDidMount() {
+    window.addEventListener('resize', this.handleResize);
+  }
 
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  }
+
+  handleResize = () => {
+    this.setState({ isMobile: window.innerWidth <= 768 });
+  };
 
   render() {
     const { features, className, hasBeenVisible, Title, inverse } = this.props;
-    const { activeFeatureButton, activeFeature, isTransitioning } = this.state;
+    const { activeFeatureButton, activeFeature, isTransitioning, isMobile } = this.state;
 
     const cardContents = ([<div key="card1" className={classNames(styles.featureText, { [styles.fadeOut]: isTransitioning, [styles.fadeIn]: !isTransitioning })}>
       <h3 className={styles.featureTitle}>{features[activeFeature].title}</h3>
@@ -54,7 +66,7 @@ class Features extends React.Component<Props & IntersectionObserverProps, State>
     <div key="card2" className={classNames(styles.featureImage, { [styles.fadeOut]: isTransitioning, [styles.fadeIn]: !isTransitioning })}>
       <img src={features[activeFeature].image} alt={features[activeFeature].title} />
     </div>])
-    const cards = inverse ? cardContents.reverse() : cardContents;
+    const cards = inverse && !isMobile ? cardContents.reverse() : cardContents;
 
     return (
       <section className={classNames(styles.featuresSection, 'fade-in-up', { visible: hasBeenVisible }, className ? styles[className] : '')}>

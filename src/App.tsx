@@ -25,7 +25,7 @@ function App() {
       image: '/ChooseSimSchool/feedback.png'
     },
     {
-      title: 'Reflect',
+      title: 'Improve',
       description: 'In simSchool real-time feedback and personalized reports are central to the learning process. For every 15 minutes of decision-making simSchool provides observations on learner alignment to teaching effectiveness standards, student academic and emotional outcomes, and equitable practice.',
       image: '/ChooseSimSchool/observations.png'
     }

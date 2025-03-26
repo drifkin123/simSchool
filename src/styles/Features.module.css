@@ -120,13 +120,17 @@
   .featureContent {
     flex-direction: column;
     gap: 2rem;
+    align-items: center;
+    justify-content: center;
   }
 
   .featureTitle {
     font-size: 1.5rem;
+    text-align: center;
   }
 
   .featureDescription {
     font-size: 1.125rem;
+    text-align: center;
   }
 }
