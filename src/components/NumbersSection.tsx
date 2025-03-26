@@ -1,7 +1,13 @@
 import React from 'react';
-import '../styles/NumbersSection.css';
+import styles from '../styles/NumbersSection.module.css';
 import '../styles/animations.css';
-import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
+import withIntersectionObserver from '../hocs/withIntersectionObserver';
+import classNames from 'classnames';
+
+interface NumbersSectionProps {
+  isVisible: boolean;
+  hasBeenVisible: boolean;
+}
 
 const stats = [
   {
@@ -22,23 +28,25 @@ const stats = [
   }
 ];
 
-const NumbersSection: React.FC = () => {
-  const [ref, isVisible] = useIntersectionObserver<HTMLElement>();
+class NumbersSection extends React.Component<NumbersSectionProps> {
+  render() {
+    const { hasBeenVisible } = this.props;
 
-  return (
-    <section ref={ref} className={`numbers-section fade-in-up ${isVisible ? 'visible' : ''}`}>
-      <div className="numbers-container">
-        <div className="numbers-grid">
-          {stats.map((stat, index) => (
-            <div key={index} className="stat-item">
-              <div className="stat-number">{stat.number}</div>
-              <div className="stat-label">{stat.label}</div>
-            </div>
-          ))}
+    return (
+      <section className={classNames(styles.numbersSection, 'fade-in-up', { visible: hasBeenVisible })}>
+        <div className={styles.numbersContainer}>
+          <div className={styles.numbersGrid}>
+            {stats.map((stat, index) => (
+              <div key={index} className={styles.statItem}>
+                <div className={styles.statNumber}>{stat.number}</div>
+                <div className={styles.statLabel}>{stat.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
-  );
-};
+      </section>
+    );
+  }
+}
 
-export default NumbersSection; 
+export default withIntersectionObserver(NumbersSection); 
