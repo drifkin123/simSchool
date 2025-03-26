@@ -1,6 +1,5 @@
 import React from 'react';
 import '../styles/IndustriesSection.css';
-import '../styles/animations.css';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 const industries = [

@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from '../styles/ContactUs.module.css';
-import '../styles/animations.css';
 import withIntersectionObserver from '../hocs/withIntersectionObserver';
 import classNames from 'classnames';
 import { IntersectionObserverProps } from '../types/IntersectionObserver';

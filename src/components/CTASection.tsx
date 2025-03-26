@@ -1,15 +1,16 @@
 import React from 'react';
 import styles from '../styles/CTASection.module.css';
-import '../styles/animations.css';
 import withIntersectionObserver from '../hocs/withIntersectionObserver';
 import classNames from 'classnames';
+
+interface Props { }
 
 interface CTASectionProps {
   isVisible: boolean;
   hasBeenVisible: boolean;
 }
 
-class CTASection extends React.Component<CTASectionProps> {
+class CTASection extends React.Component<Props & CTASectionProps> {
   render() {
     const { hasBeenVisible } = this.props;
 

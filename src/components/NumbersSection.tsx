@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from '../styles/NumbersSection.module.css';
-import '../styles/animations.css';
 import withIntersectionObserver from '../hocs/withIntersectionObserver';
 import classNames from 'classnames';
+
+interface Props { }
 
 interface NumbersSectionProps {
   isVisible: boolean;
@@ -28,7 +29,7 @@ const stats = [
   }
 ];
 
-class NumbersSection extends React.Component<NumbersSectionProps> {
+class NumbersSection extends React.Component<Props &NumbersSectionProps> {
   render() {
     const { hasBeenVisible } = this.props;
 
