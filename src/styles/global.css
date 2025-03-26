@@ -14,8 +14,7 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: Lato, sans-serif;;
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--background-color);
@@ -44,6 +43,35 @@ body {
 
 .btn-primary:hover {
   background-color: var(--button-hover);
+}
+
+.btn-pill {
+  font-family: Lato;
+  background-color: #4a90e2;
+  color: #ffffff;
+  padding: 12px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 21px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+.btn-pill:hover {
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-pill:active {
+  transform: translateY(2px);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #3b7dc5;
+}
+
+.btn-pill.active {
+  background-color: #8cbff2;
+  color: #2a5b89;
 }
 
 .section {

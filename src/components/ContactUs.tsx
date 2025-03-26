@@ -19,7 +19,7 @@ class ContactUs extends React.Component<Props & IntersectionObserverProps> {
             Give your pre-and in-service educators access to just-in-time, real-time decision-making practice and personalized feedback that improves teaching effectiveness and reflective practice at all stages of the career journey.
           </p>
           <div className={styles.contactButtonContainer}>
-            <button className={styles.contactButton}>Contact Us</button>
+            <a href="#contact_us" className={classNames('btn', 'btn-primary')}>Contact Us</a>
           </div>
         </div>
       </section>

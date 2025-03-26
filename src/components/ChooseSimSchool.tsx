@@ -62,7 +62,7 @@ class ChooseSimSchool extends React.Component<Props & IntersectionObserverProps>
             ))}
           </div>
           <div className={styles.demoButtonContainer}>
-            <button className={styles.demoButton}>Book a Demo</button>
+            <a href="#book_a_demo" className={classNames('btn', 'btn-primary')}>Book a Demo</a>
           </div>
         </div>
       </section>

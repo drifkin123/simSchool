@@ -64,7 +64,7 @@ class Features extends React.Component<Props & IntersectionObserverProps, State>
             {features.map((feature, index) => (
               <button
                 key={feature.title}
-                className={classNames(styles.haloButton, { [styles.active]: activeFeatureButton === index })}
+                className={classNames('btn-pill', { ['active']: activeFeatureButton === index })}
                 onClick={() => this.handleFeatureChange(index)}
               >
                 {feature.title}

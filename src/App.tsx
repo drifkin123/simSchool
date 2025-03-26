@@ -10,6 +10,7 @@ import IndustriesSection from './components/IndustriesSection';
 import CTASection from './components/CTASection';
 import stylesFeatures from './styles/Features.module.css';
 import NumbersSection from './components/NumbersSection';
+import Footer from './components/Footer';
 
 function App() {
   const learnerFeatures = [
@@ -70,6 +71,7 @@ function App() {
         <CTASection />
         <NumbersSection />
       </main>
+      <Footer />
     </div>
   );
 }
