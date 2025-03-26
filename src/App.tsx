@@ -63,7 +63,8 @@ function App() {
         <Features 
           Title={<h2 className={stylesFeatures.sectionTitle}>What <strong>Institutions</strong> do with simSchool</h2>}
           features={institutionFeatures}
-          className="white-bg"
+          className="whiteBg"
+          inverse={true}
         />
         <IndustriesSection />
         <CTASection />

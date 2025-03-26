@@ -13,40 +13,58 @@ interface Feature {
 interface Props {
   Title: React.ReactNode;
   features: Feature[];
+  inverse?: boolean;
   className?: string;
 }
 
 interface State {
+  activeFeatureButton: number;
   activeFeature: number;
   isTransitioning: boolean;
 }
 
 class Features extends React.Component<Props & IntersectionObserverProps, State> {
   state: State = {
+    activeFeatureButton: 0,
     activeFeature: 0,
-    isTransitioning: false
+    isTransitioning: false,
   };
 
   handleFeatureChange = (index: number) => {
-    this.setState({ isTransitioning: true });
+    if (index === this.state.activeFeatureButton) {
+      return;
+    }
+
+    this.setState({ activeFeatureButton: index, isTransitioning: true });
     setTimeout(() => {
       this.setState({ activeFeature: index, isTransitioning: false });
-    }, 300); // Match this with CSS transition duration
+    }, 200); // Match this with CSS transition duration
   };
 
+
+
   render() {
-    const { features, className, hasBeenVisible, Title } = this.props;
-    const { activeFeature, isTransitioning } = this.state;
+    const { features, className, hasBeenVisible, Title, inverse } = this.props;
+    const { activeFeatureButton, activeFeature, isTransitioning } = this.state;
+
+    const cardContents = ([<div key="card1" className={classNames(styles.featureText, { [styles.fadeOut]: isTransitioning, [styles.fadeIn]: !isTransitioning })}>
+      <h3 className={styles.featureTitle}>{features[activeFeature].title}</h3>
+      <p className={styles.featureDescription}>{features[activeFeature].description}</p>
+    </div>,
+    <div key="card2" className={classNames(styles.featureImage, { [styles.fadeOut]: isTransitioning, [styles.fadeIn]: !isTransitioning })}>
+      <img src={features[activeFeature].image} alt={features[activeFeature].title} />
+    </div>])
+    const cards = inverse ? cardContents.reverse() : cardContents;
 
     return (
-      <section className={classNames(styles.featuresSection, 'fade-in-up', { visible: hasBeenVisible }, className)}>
+      <section className={classNames(styles.featuresSection, 'fade-in-up', { visible: hasBeenVisible }, className ? styles[className] : '')}>
         <div className={styles.container}>
           {Title}
-          <div className={styles.featureButtons}>
+          <div className={styles.buttonContainer}>
             {features.map((feature, index) => (
               <button
-                key={index}
-                className={classNames(styles.featureButton, { active: activeFeature === index })}
+                key={feature.title}
+                className={classNames(styles.haloButton, { [styles.active]: activeFeatureButton === index })}
                 onClick={() => this.handleFeatureChange(index)}
               >
                 {feature.title}
@@ -54,13 +72,7 @@ class Features extends React.Component<Props & IntersectionObserverProps, State>
             ))}
           </div>
           <div className={styles.featureContent}>
-            <div className={classNames(styles.featureText, { fadeOut: isTransitioning, fadeIn: !isTransitioning })}>
-              <h3 className={styles.featureTitle}>{features[activeFeature].title}</h3>
-              <p className={styles.featureDescription}>{features[activeFeature].description}</p>
-            </div>
-            <div className={classNames(styles.featureImage, { fadeOut: isTransitioning, fadeIn: !isTransitioning })}>
-              <img src={features[activeFeature].image} alt={features[activeFeature].title} />
-            </div>
+            {cards}
           </div>
         </div>
       </section>

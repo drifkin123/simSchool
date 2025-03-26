@@ -1,7 +1,7 @@
 .featuresSection {
   padding: 6rem 0;
   background-color: #f8fafc;
-  opacity: 0;
+  opacity: 0.1;
   transform: translateY(50px);
 }
 
@@ -56,7 +56,7 @@
   border: 2px solid #e5e7eb;
   border-radius: 0.5rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .featureButton:hover {
@@ -70,15 +70,39 @@
   border-color: #2563eb;
 }
 
+.buttonContainer {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.haloButton {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 20px;
+  background-color: var(--primary-color);
+  color: white;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.haloButton.active {
+  background-color: white;
+  color: black;
+  box-shadow: 0 0 6px 3px #fff, 0 0 7px 4px rgb(0, 68, 255);
+}
+
 .featureText,
 .featureImage {
   opacity: 1;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
 }
 
 .featureText.fadeOut,
 .featureImage.fadeOut {
-  opacity: 0;
+  opacity: 0.1;
 }
 
 .featureText.fadeIn,
