@@ -172,6 +172,12 @@ class Header extends Component<{}, State> {
                   </ul>
                 </div>
               </li>
+              {isMobile && <li>
+                <div className={styles.mobileButtons}>
+                  <a href="/login" className={classNames(`btn btn-secondary`, styles.mobileLogin)}>User Login</a>
+                  <a href="/demo" className={`btn btn-primary`}>Book a Demo</a>
+                </div>
+              </li>}
             </ul>
           </nav>
           <div className={styles.headerButtons}>
