@@ -18,7 +18,7 @@ class Hero extends Component {
               Learn more about the most researched and widely-used simulation platform in educator preparation and development
             </p>
             <div className={styles.heroButtons}>
-              <a href="#about" className={classNames('btn', 'btn-primary')}>About SimSchool</a>
+              <a href="#about" className={classNames('btn', 'btn-primary')}>About simSchool</a>
               <a href="#demo" className={classNames('btn', 'btn-secondary')}>Book a Demo</a>
             </div>
           </div>

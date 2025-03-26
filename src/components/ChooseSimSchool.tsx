@@ -48,7 +48,7 @@ class ChooseSimSchool extends React.Component<Props & IntersectionObserverProps>
     return (
       <section className={classNames(styles.chooseSection, 'fade-in-up', { visible: hasBeenVisible })}>
         <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>Why Partners Choose SimSchool</h2>
+          <h2 className={styles.sectionTitle}>Why Partners Choose simSchool</h2>
           <div className={styles.benefitsGrid}>
             {this.benefits.map((benefit, index) => (
               <div key={index} className={styles.benefitCard}>
