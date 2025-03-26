@@ -59,7 +59,7 @@
 }
 
 .container {
-  --size: clamp(10rem, 1rem + 40vmin, 30rem);
+  --size: clamp(10rem, 1rem + 40vw, 20rem);
   --gap: calc(var(--size) / 14);
   --duration: 60s;
   --scroll-start: 0;
