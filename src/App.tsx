@@ -8,6 +8,7 @@ import ContactUs from './components/ContactUs';
 import Features from './components/Features';
 import IndustriesSection from './components/IndustriesSection';
 import CTASection from './components/CTASection';
+import stylesFeatures from './styles/Features.module.css';
 import NumbersSection from './components/NumbersSection';
 
 function App() {
@@ -56,11 +57,11 @@ function App() {
         <ChooseSimSchool />
         <ContactUs />
         <Features 
-          title="What <strong>Learners</strong> do with simSchool"
+          Title={<h2 className={stylesFeatures.sectionTitle}>What <strong>Learners</strong> do with simSchool</h2>}
           features={learnerFeatures}
         />
         <Features 
-          title="What <strong>Institutions</strong> do with simSchool"
+          Title={<h2 className={stylesFeatures.sectionTitle}>What <strong>Institutions</strong> do with simSchool</h2>}
           features={institutionFeatures}
           className="white-bg"
         />

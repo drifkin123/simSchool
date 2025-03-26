@@ -3,14 +3,11 @@ import styles from '../styles/LoopingLogos.module.css';
 import '../styles/animations.css';
 import withIntersectionObserver from '../hocs/withIntersectionObserver';
 import classNames from 'classnames';
+import { IntersectionObserverProps } from '../types/IntersectionObserver';
 
 interface Props { }
 
-interface InjectedProps {
-  isVisible: boolean;
-}
-
-class LoopingLogos extends React.Component<Props & InjectedProps> {
+class LoopingLogos extends React.Component<Props & IntersectionObserverProps> {
   private logos = [
     <img src="/logos/mcdonalds.svg" alt="McDonald's" key="McDonald's" />,
     <img src="/logos/jordan.svg" alt="Jordan" key="Jordan" />,
@@ -23,10 +20,10 @@ class LoopingLogos extends React.Component<Props & InjectedProps> {
   ];
 
   render() {
-    const { isVisible } = this.props;
+    const { hasBeenVisible } = this.props;
 
     return (
-      <div className={classNames('fade-in-up', { visible: isVisible })}>
+      <div className={classNames('fade-in-up', { visible: hasBeenVisible })}>
         <h3 className={styles.title}>The SimSchool Global Community</h3>
 
         <div className={styles.container}>

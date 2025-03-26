@@ -3,14 +3,11 @@ import styles from '../styles/ChooseSimSchool.module.css';
 import '../styles/animations.css';
 import withIntersectionObserver from '../hocs/withIntersectionObserver';
 import classNames from 'classnames';
+import { IntersectionObserverProps } from '../types/IntersectionObserver';
 
 interface Props { }
 
-interface InjectedProps {
-  isVisible: boolean;
-}
-
-class ChooseSimSchool extends React.Component<Props & InjectedProps> {
+class ChooseSimSchool extends React.Component<Props & IntersectionObserverProps> {
   private benefits = [
     {
       image: '/ChooseSimSchool/tested.png',
@@ -47,10 +44,10 @@ class ChooseSimSchool extends React.Component<Props & InjectedProps> {
   ];
 
   render() {
-    const { isVisible } = this.props;
+    const { hasBeenVisible } = this.props;
 
     return (
-      <section className={classNames(styles.chooseSection, 'fade-in-up', { visible: isVisible })}>
+      <section className={classNames(styles.chooseSection, 'fade-in-up', { visible: hasBeenVisible })}>
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>Why Choose SimSchool</h2>
           <div className={styles.benefitsGrid}>

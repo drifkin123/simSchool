@@ -1,19 +1,19 @@
-.features-section {
+.featuresSection {
   padding: 6rem 0;
   background-color: #f8fafc;
   opacity: 0;
   transform: translateY(50px);
 }
 
-.features-section.white-bg {
+.featuresSection.whiteBg {
   background-color: white;
 }
 
-.features-section:nth-of-type(2) {
+.featuresSection:nth-of-type(2) {
   background-color: white;
 }
 
-.features-section.visible {
+.featuresSection.visible {
   animation: fadeInUp 0.6s ease forwards;
 }
 
@@ -30,24 +30,24 @@
   padding: 0 1.5rem;
 }
 
-.section-title {
+.sectionTitle {
   text-align: center;
   font-size: 2.5rem;
-  font-weight: 600;
+  font-weight: 400;
   color: #1a1a1a;
   margin-bottom: 4rem;
   line-height: 1.2;
   letter-spacing: -0.02em;
 }
 
-.feature-buttons {
+.featureButtons {
   display: flex;
   justify-content: center;
   gap: 1rem;
   margin-bottom: 3rem;
 }
 
-.feature-button {
+.featureButton {
   padding: 1rem 2rem;
   font-size: 1.125rem;
   font-weight: 500;
@@ -59,34 +59,34 @@
   transition: all 0.3s ease;
 }
 
-.feature-button:hover {
+.featureButton:hover {
   border-color: #2563eb;
   color: #2563eb;
 }
 
-.feature-button.active {
+.featureButton.active {
   background-color: #2563eb;
   color: white;
   border-color: #2563eb;
 }
 
-.feature-text,
-.feature-image {
+.featureText,
+.featureImage {
   opacity: 1;
   transition: opacity 0.3s ease;
 }
 
-.feature-text.fade-out,
-.feature-image.fade-out {
+.featureText.fadeOut,
+.featureImage.fadeOut {
   opacity: 0;
 }
 
-.feature-text.fade-in,
-.feature-image.fade-in {
+.featureText.fadeIn,
+.featureImage.fadeIn {
   opacity: 1;
 }
 
-.feature-content {
+.featureContent {
   display: flex;
   align-items: center;
   gap: 4rem;
@@ -94,11 +94,11 @@
   position: relative;
 }
 
-.feature-text {
+.featureText {
   flex: 1;
 }
 
-.feature-title {
+.featureTitle {
   font-size: 2rem;
   font-weight: 600;
   color: #1a1a1a;
@@ -106,20 +106,20 @@
   line-height: 1.3;
 }
 
-.feature-description {
+.featureDescription {
   font-size: 1.25rem;
   color: #4b5563;
   line-height: 1.6;
 }
 
-.feature-image {
+.featureImage {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.feature-image img {
+.featureImage img {
   max-width: 100%;
   height: auto;
   border-radius: 1rem;
@@ -127,31 +127,31 @@
 }
 
 @media (max-width: 768px) {
-  .feature-buttons {
+  .featureButtons {
     flex-direction: column;
     align-items: center;
     gap: 0.75rem;
   }
 
-  .feature-button {
+  .featureButton {
     width: 100%;
     max-width: 300px;
   }
 
-  .section-title {
+  .sectionTitle {
     font-size: 2rem;
   }
 
-  .feature-content {
+  .featureContent {
     flex-direction: column;
     gap: 2rem;
   }
 
-  .feature-title {
+  .featureTitle {
     font-size: 1.5rem;
   }
 
-  .feature-description {
+  .featureDescription {
     font-size: 1.125rem;
   }
 } 

@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import '../styles/Features.css';
-import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
+import React from 'react';
+import styles from '../styles/Features.module.css';
+import withIntersectionObserver from '../hocs/withIntersectionObserver';
+import classNames from 'classnames';
+import { IntersectionObserverProps } from '../types/IntersectionObserver';
 
 interface Feature {
   title: string;
@@ -8,67 +10,62 @@ interface Feature {
   image: string;
 }
 
-interface FeaturesProps {
-  title: string;
+interface Props {
+  Title: React.ReactNode;
   features: Feature[];
   className?: string;
 }
 
-const Features: React.FC<FeaturesProps> = ({ title, features, className }) => {
-  const [activeFeature, setActiveFeature] = useState(0);
-  const [ref, isVisible] = useIntersectionObserver<HTMLElement>();
-  const [isTransitioning, setIsTransitioning] = useState(false);
+interface State {
+  activeFeature: number;
+  isTransitioning: boolean;
+}
 
-  const handleFeatureChange = (index: number) => {
-    setIsTransitioning(true);
+class Features extends React.Component<Props & IntersectionObserverProps, State> {
+  state: State = {
+    activeFeature: 0,
+    isTransitioning: false
+  };
+
+  handleFeatureChange = (index: number) => {
+    this.setState({ isTransitioning: true });
     setTimeout(() => {
-      setActiveFeature(index);
-      setIsTransitioning(false);
+      this.setState({ activeFeature: index, isTransitioning: false });
     }, 300); // Match this with CSS transition duration
   };
 
-  // Parse the title to handle bold text
-  const renderTitle = () => {
-    const parts = title.split(/<strong>|<\/strong>/);
+  render() {
+    const { features, className, hasBeenVisible, Title } = this.props;
+    const { activeFeature, isTransitioning } = this.state;
+
     return (
-      <h2 className="section-title">
-        {parts.map((part, index) => {
-          if (index % 2 === 1) {
-            return <strong key={index}>{part}</strong>;
-          }
-          return part;
-        })}
-      </h2>
+      <section className={classNames(styles.featuresSection, 'fade-in-up', { visible: hasBeenVisible }, className)}>
+        <div className={styles.container}>
+          {Title}
+          <div className={styles.featureButtons}>
+            {features.map((feature, index) => (
+              <button
+                key={index}
+                className={classNames(styles.featureButton, { active: activeFeature === index })}
+                onClick={() => this.handleFeatureChange(index)}
+              >
+                {feature.title}
+              </button>
+            ))}
+          </div>
+          <div className={styles.featureContent}>
+            <div className={classNames(styles.featureText, { fadeOut: isTransitioning, fadeIn: !isTransitioning })}>
+              <h3 className={styles.featureTitle}>{features[activeFeature].title}</h3>
+              <p className={styles.featureDescription}>{features[activeFeature].description}</p>
+            </div>
+            <div className={classNames(styles.featureImage, { fadeOut: isTransitioning, fadeIn: !isTransitioning })}>
+              <img src={features[activeFeature].image} alt={features[activeFeature].title} />
+            </div>
+          </div>
+        </div>
+      </section>
     );
-  };
+  }
+}
 
-  return (
-    <section ref={ref} className={`features-section fade-in-up ${isVisible ? 'visible' : ''} ${className || ''}`}>
-      <div className="container">
-        {renderTitle()}
-        <div className="feature-buttons">
-          {features.map((feature, index) => (
-            <button
-              key={index}
-              className={`feature-button ${activeFeature === index ? 'active' : ''}`}
-              onClick={() => handleFeatureChange(index)}
-            >
-              {feature.title}
-            </button>
-          ))}
-        </div>
-        <div className="feature-content">
-          <div className={`feature-text ${isTransitioning ? 'fade-out' : 'fade-in'}`}>
-            <h3 className="feature-title">{features[activeFeature].title}</h3>
-            <p className="feature-description">{features[activeFeature].description}</p>
-          </div>
-          <div className={`feature-image ${isTransitioning ? 'fade-out' : 'fade-in'}`}>
-            <img src={features[activeFeature].image} alt={features[activeFeature].title} />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default Features; 
+export default withIntersectionObserver(Features); 

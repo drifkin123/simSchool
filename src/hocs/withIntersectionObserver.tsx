@@ -2,6 +2,7 @@ import React from 'react';
 
 interface WithIntersectionObserverState {
   isVisible: boolean;
+  hasBeenVisible: boolean; // New state to track first-time visibility
 }
 
 const withIntersectionObserver = <P extends object>(
@@ -14,13 +15,15 @@ const withIntersectionObserver = <P extends object>(
 
     constructor(props: P) {
       super(props);
-      this.state = { isVisible: false };
+      this.state = { isVisible: false, hasBeenVisible: false };
       this.containerRef = React.createRef();
     }
 
     componentDidMount() {
       this.observer = new IntersectionObserver(([entry]) => {
-        this.setState({ isVisible: entry.isIntersecting });
+        if (entry.isIntersecting && !this.state.hasBeenVisible) {
+          this.setState({ isVisible: true, hasBeenVisible: true });
+        }
       }, options);
 
       if (this.containerRef.current) {
@@ -37,7 +40,7 @@ const withIntersectionObserver = <P extends object>(
     render() {
       return (
         <div ref={this.containerRef}>
-          <WrappedComponent {...this.props} isVisible={this.state.isVisible} />
+          <WrappedComponent {...this.props} isVisible={this.state.isVisible} hasBeenVisible={this.state.hasBeenVisible} />
         </div>
       );
     }
