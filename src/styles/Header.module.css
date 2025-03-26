@@ -201,7 +201,7 @@
 }
 
 .dropdownItem:hover {
-  color: #2563eb;
+  color: var(--primary-color);
   background: #f8fafc;
 }
 
@@ -209,33 +209,6 @@
   display: flex;
   gap: 1rem;
   align-items: center;
-}
-
-.btn {
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.btnOutline {
-  color: #2563eb;
-  border: 1px solid #2563eb;
-}
-
-.btnOutline:hover {
-  background: #2563eb;
-  color: white;
-}
-
-.btnPrimary {
-  background: #2563eb;
-  color: white;
-}
-
-.btnPrimary:hover {
-  background: #1d4ed8;
 }
 
 @media (max-width: 768px) {

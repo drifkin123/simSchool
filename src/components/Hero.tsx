@@ -19,7 +19,7 @@ class Hero extends Component {
             </p>
             <div className={styles.heroButtons}>
               <a href="#about" className={classNames('btn', 'btn-primary')}>About SimSchool</a>
-              <a href="#demo" className={classNames('btn', 'btn-outline')}>Book a Demo</a>
+              <a href="#demo" className={classNames('btn', 'btn-secondary')}>Book a Demo</a>
             </div>
           </div>
         </div>

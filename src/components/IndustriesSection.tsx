@@ -1,6 +1,14 @@
 import React from 'react';
-import '../styles/IndustriesSection.css';
-import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
+import styles from '../styles/IndustriesSection.module.css';
+import withIntersectionObserver from '../hocs/withIntersectionObserver';
+import classNames from 'classnames';
+
+interface Props { }
+
+interface IndustriesSectionProps {
+  isVisible: boolean;
+  hasBeenVisible: boolean;
+}
 
 const industries = [
   {
@@ -29,30 +37,32 @@ const industries = [
   }
 ];
 
-const IndustriesSection: React.FC = () => {
-  const [ref, isVisible] = useIntersectionObserver<HTMLElement>();
+class IndustriesSection extends React.Component<Props & IndustriesSectionProps> {
+  render() {
+    const { hasBeenVisible } = this.props;
 
-  return (
-    <section ref={ref} className={`industries-section fade-in-up ${isVisible ? 'visible' : ''}`}>
-      <div className="industries-container">
-        <h2 className="industries-title">Where simSchool Works</h2>
-        <p className="industries-description">
-          Designed to work on any device, anywhere, any time, the simSchool platform is flexible enough to provide value and insights anywhere teaching and learning happens.
-        </p>
-        <div className="industries-grid">
-          {industries.map((industry, index) => (
-            <div key={index} className="industry-card">
-              <div 
-                className="industry-image"
-                style={{ backgroundImage: `url(${industry.imageUrl})` }}
-              />
-              <h3 className="industry-title">{industry.title}</h3>
-            </div>
-          ))}
+    return (
+      <section className={classNames(styles.industriesSection, 'fade-in-up', { visible: hasBeenVisible })}>
+        <div className={styles.industriesContainer}>
+          <h2 className={styles.industriesTitle}>Where simSchool Works</h2>
+          <p className={styles.industriesDescription}>
+            Designed to work on any device, anywhere, any time, the simSchool platform is flexible enough to provide value and insights anywhere teaching and learning happens.
+          </p>
+          <div className={styles.industriesGrid}>
+            {industries.map((industry, index) => (
+              <div key={index} className={styles.industryCard}>
+                <div
+                  className={styles.industryImage}
+                  style={{ backgroundImage: `url(${industry.imageUrl})` }}
+                />
+                <h3 className={styles.industryTitle}>{industry.title}</h3>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
-  );
-};
+      </section>
+    );
+  }
+}
 
-export default IndustriesSection; 
+export default withIntersectionObserver(IndustriesSection); 

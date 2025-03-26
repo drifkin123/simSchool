@@ -175,8 +175,8 @@ class Header extends Component<{}, State> {
             </ul>
           </nav>
           <div className={styles.headerButtons}>
-            <a href="/login" className={`${styles.btn} ${styles.btnOutline}`}>User Login</a>
-            <a href="/demo" className={`${styles.btn} ${styles.btnPrimary}`}>Book a Demo</a>
+            <a href="/login" className={`btn btn-secondary`}>User Login</a>
+            <a href="/demo" className={`btn btn-primary`}>Book a Demo</a>
           </div>
         </div>
       </header>

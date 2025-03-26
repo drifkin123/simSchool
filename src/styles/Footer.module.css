@@ -40,13 +40,9 @@
   left: 50%;
   width: 0;
   height: 2px;
-  background-color: #2563eb;
+  background-color: #4b5563;
   transition: all 0.3s ease;
   transform: translateX(-50%);
-}
-
-.link:hover {
-  color: #2563eb;
 }
 
 .link:hover::after {

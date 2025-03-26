@@ -1,15 +1,11 @@
 .featuresSection {
   padding: 6rem 0;
-  background-color: #f8fafc;
+  background-color: var(--accent-color);
   opacity: 0.1;
   transform: translateY(50px);
 }
 
 .featuresSection.whiteBg {
-  background-color: white;
-}
-
-.featuresSection:nth-of-type(2) {
   background-color: white;
 }
 
@@ -67,7 +63,7 @@
 
 .featureContent {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 4rem;
   margin-bottom: 4rem;
   position: relative;
