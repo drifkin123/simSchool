@@ -19,7 +19,7 @@ class Hero extends Component {
             </p>
             <div className={styles.heroButtons}>
               <a href="#about" className={classNames('btn', 'btn-primary')}>About simSchool</a>
-              <a href="#demo" className={classNames('btn', 'btn-secondary')}>Book a Demo</a>
+              <a target="_blank" rel="noopener noreferrer" href="https://calendly.com/simschool/simschool-demo_discussion" className={classNames('btn', 'btn-secondary')}>Book a Demo</a>
             </div>
           </div>
         </div>
