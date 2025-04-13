@@ -13,27 +13,33 @@ interface IndustriesSectionProps {
 const industries = [
   {
     title: 'Career Technical Education',
-    imageUrl: '/images/cte-bg.jpg'
+    imageUrl: '/images/cte-bg.jpg',
+    description: 'Easy-to-launch, proven strategy for enhancing teacher pipeline clubs and CTE pathways'
   },
   {
     title: 'Education Preparation',
-    imageUrl: '/images/ed-prep-bg.jpg'
+    imageUrl: '/images/ed-prep-bg.jpg',
+    description: 'Cost-effective, validated tool to help candidates translate theory into practice'
   },
   {
     title: 'Field Work',
-    imageUrl: '/images/field-work-bg.jpg'
+    imageUrl: '/images/field-work-bg.jpg',
+    description: 'Enhance field work, mitigate risk, improve candidate skill and effectiveness'
   },
   {
     title: 'In-Service Educator Professional Development',
-    imageUrl: '/images/prof-dev-bg.jpg'
+    imageUrl: '/images/prof-dev-bg.jpg',
+    description: 'Support educators where they are with engaging, on-demand, targeted PD'
   },
   {
     title: 'Research',
-    imageUrl: '/images/research-bg.jpg'
+    imageUrl: '/images/research-bg.jpg',
+    description: 'The "flight simulator" for research in teaching and learning'
   },
   {
-    title: 'Out of School / After School Programs',
-    imageUrl: '/images/after-school-bg.jpg'
+    title: 'Extracurricular & Afterschool Programs',
+    imageUrl: '/images/after-school-bg.jpg',
+    description: 'Give tutors, coaches, and aids access to high quality, targeted PD'
   }
 ];
 
@@ -50,12 +56,16 @@ class IndustriesSection extends React.Component<Props & IndustriesSectionProps> 
           </p>
           <div className={styles.industriesGrid}>
             {industries.map((industry, index) => (
-              <div key={index} className={styles.industryCard}>
-                <div
-                  className={styles.industryImage}
-                  style={{ backgroundImage: `url(${industry.imageUrl})` }}
-                />
-                <h3 className={styles.industryTitle}>{industry.title}</h3>
+              <div key={index} className={styles.industryCardWrapper}>
+                <div className={styles.industryCard}>
+                  <div className={styles.industryCardFront}>
+                    <h3 className={styles.industryTitle}>{industry.title}</h3>
+                  </div>
+                  <div className={styles.industryCardBack}>
+                    <h3 className={styles.industryTitleDescription}>{industry.title}</h3>
+                    <p className={styles.industryDescription}>{industry.description}</p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>

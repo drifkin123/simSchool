@@ -36,44 +36,126 @@
   gap: 30px;
 }
 
-.industryCard {
+.industryCardWrapper {
   position: relative;
   height: 250px;
   border-radius: 8px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: box-shadow 0.3s ease;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  padding: 10px;
+  will-change: transform;
 }
 
-.industryCard:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.industryCard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.industryCardWrapper:hover .industryCard {
+  transform: rotate3d(0, 1, 0, 180deg);
+}
+
+.industryCardFront,
+.industryCardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  backface-visibility: hidden;
+  gap: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.industryCardFront {
+  background-color: #e0eefc; /* Darker light blue */
+  transform: translate3d(0, 0, 1px);
+}
+
+.industryCardWrapper:nth-child(even) .industryCardFront {
+  background-color: #e8e8e8; /* Darker light gray */
+}
+
+.industryCardBack {
+  color: var(--text-color);
+  transform: rotate3d(0, 1, 0, 180deg) translate3d(0, 0, 1px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: white;
+  text-align: center;
 }
 
 .industryImage {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  filter: brightness(0.7) grayscale(100%);
-  transition: filter 0.5s ease;
-}
-
-.industryCard:hover .industryImage {
-  filter: brightness(0.7);
+  display: none; /* Remove the image container */
 }
 
 .industryTitle {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate3d(-50%, -50%, 0);
   width: 100%;
   padding: 20px;
-  color: white;
+  color: #333; /* Darker text color */
   font-size: 1.5rem;
   margin: 0;
   text-align: center;
+  z-index: 1;
+}
+
+.industryDescription {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .industryCardWrapper {
+    perspective: none;
+    transform-style: flat;
+    padding: 0;
+    height: auto;
+    min-height: 200px;
+  }
+
+  .industryCard {
+    transform-style: flat;
+    height: auto;
+  }
+
+  .industryCardWrapper:hover .industryCard {
+    transform: none;
+  }
+
+  .industryCardFront {
+    display: none;
+  }
+
+  .industryCardBack {
+    position: relative;
+    transform: none;
+    height: auto;
+    min-height: 200px;
+    background-color: white;
+    color: #333;
+    padding: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .industryDescription {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
 } 

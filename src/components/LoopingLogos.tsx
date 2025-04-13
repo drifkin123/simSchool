@@ -22,7 +22,7 @@ class LoopingLogos extends React.Component<Props & IntersectionObserverProps> {
     const { hasBeenVisible } = this.props;
 
     return (
-      <div className={classNames('fade-in-up', { visible: hasBeenVisible }, styles.container)}>
+      <div className={classNames('fade-in-up', { visible: hasBeenVisible })}>
         <h3 className={styles.title}>The simSchool Global Community</h3>
 
         <div className={styles.container}>
