@@ -14,6 +14,7 @@ import NumbersSection from './components/NumbersSection';
 import Footer from './components/Footer';
 import Overview from './components/Overview';
 import FeaturesPage from './components/FeaturesPage';
+import Research from './components/Research';
 
 function App() {
   const learnerFeatures = [

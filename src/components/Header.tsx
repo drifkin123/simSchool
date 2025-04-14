@@ -106,7 +106,7 @@ class Header extends Component<{}, State> {
                     <ul className={styles.dropdownSectionList}>
                       <li><a className={styles.dropdownItem} href="/overview">Overview</a></li>
                       <li><a className={styles.dropdownItem} href="/features">Features</a></li>
-                      <li><a className={styles.dropdownItem} href="/about-research">Research</a></li>
+                      <li><a className={styles.dropdownItem} href="/research">Research</a></li>
                     </ul>
                   </div>
                   <div className={styles.dropdownSection}>
