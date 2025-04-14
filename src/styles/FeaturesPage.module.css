@@ -1,0 +1,103 @@
+.featuresPage {
+  margin-top: 80px;
+  padding: 2rem 2rem 0 2rem;
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.introSection {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.introSection h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.introText {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 1.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.featuresTitle {
+  padding-top: 3rem;
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  margin: 3rem 0 2rem;
+  font-weight: 600;
+}
+
+.featuresSection {
+  background-color: #f8f9fa;
+  padding: 0 2rem 3rem;
+  margin: 0 -2rem;
+}
+
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.featureCard {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.featureCard h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.featureCard p {
+  color: #666;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.price {
+  font-weight: bold;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .featuresPage {
+    padding: 2rem 1rem;
+  }
+
+  .introSection h1 {
+    font-size: 2rem;
+  }
+
+  .introText {
+    font-size: 1rem;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+} 

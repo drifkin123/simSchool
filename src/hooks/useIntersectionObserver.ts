@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 
-export const useIntersectionObserver = <T extends HTMLElement>(options = {}) => {
-  const elementRef = useRef<T | null>(null);
+export const useIntersectionObserver = (options = {}) => {
   const [isVisible, setIsVisible] = useState(false);
+  const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
@@ -11,21 +11,21 @@ export const useIntersectionObserver = <T extends HTMLElement>(options = {}) => 
         observer.unobserve(entry.target);
       }
     }, {
-      threshold: 0.1,
+      threshold: 0.05,
+      rootMargin: '0px 0px -50px 0px',
       ...options
     });
 
-    const currentElement = elementRef.current;
-    if (currentElement) {
-      observer.observe(currentElement);
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
     }
 
     return () => {
-      if (currentElement) {
-        observer.unobserve(currentElement);
+      if (elementRef.current) {
+        observer.unobserve(elementRef.current);
       }
     };
   }, [options]);
 
-  return [elementRef, isVisible] as const;
+  return { elementRef, isVisible };
 }; 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import './styles/global.css';
@@ -11,6 +12,8 @@ import CTASection from './components/CTASection';
 import stylesFeatures from './styles/Features.module.css';
 import NumbersSection from './components/NumbersSection';
 import Footer from './components/Footer';
+import Overview from './components/Overview';
+import FeaturesPage from './components/FeaturesPage';
 
 function App() {
   const learnerFeatures = [
@@ -49,31 +52,43 @@ function App() {
     }
   ];
 
+  const HomePage = () => (
+    <>
+      <Hero />
+      <LoopingLogos />
+      <ChooseSimSchool />
+      <ContactUs />
+      <Features 
+        Title={<h2 className={stylesFeatures.sectionTitle}>What <strong>Learners</strong> do with simSchool</h2>}
+        features={learnerFeatures}
+      />
+      <Features 
+        Title={<h2 className={stylesFeatures.sectionTitle}>What <strong>Institutions</strong> do with simSchool</h2>}
+        features={institutionFeatures}
+        className="whiteBg"
+        inverse={true}
+      />
+      <IndustriesSection />
+      <CTASection />
+      <NumbersSection />
+    </>
+  );
   
   return (
-    <div className="App">
-      <Header />
-      <main>
-        <Hero />
-        <LoopingLogos />
-        <ChooseSimSchool />
-        <ContactUs />
-        <Features 
-          Title={<h2 className={stylesFeatures.sectionTitle}>What <strong>Learners</strong> do with simSchool</h2>}
-          features={learnerFeatures}
-        />
-        <Features 
-          Title={<h2 className={stylesFeatures.sectionTitle}>What <strong>Institutions</strong> do with simSchool</h2>}
-          features={institutionFeatures}
-          className="whiteBg"
-          inverse={true}
-        />
-        <IndustriesSection />
-        <CTASection />
-        <NumbersSection />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <main>
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route path="/overview" component={Overview} />
+            <Route path="/features" component={FeaturesPage} />
+            <Route path="/research" component={Research} />
+          </Switch>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

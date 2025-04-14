@@ -104,19 +104,19 @@ class Header extends Component<{}, State> {
                   <div className={styles.dropdownSection}>
                     <h3>About simSchool</h3>
                     <ul className={styles.dropdownSectionList}>
-                      <li><a className={styles.dropdownItem} href="#overview">Overview</a></li>
-                      <li><a className={styles.dropdownItem} href="#features">Features</a></li>
-                      <li><a className={styles.dropdownItem} href="#research">Research</a></li>
+                      <li><a className={styles.dropdownItem} href="/overview">Overview</a></li>
+                      <li><a className={styles.dropdownItem} href="/features">Features</a></li>
+                      <li><a className={styles.dropdownItem} href="/about-research">Research</a></li>
                     </ul>
                   </div>
                   <div className={styles.dropdownSection}>
                     <h3>Use Cases</h3>
                     <ul className={styles.dropdownSectionList}>
-                      <li><a className={styles.dropdownItem} href="#cte">Career Technical Education</a></li>
-                      <li><a className={styles.dropdownItem} href="#educator-prep">Educator Preparation</a></li>
-                      <li><a className={styles.dropdownItem} href="#field-work">Field Work</a></li>
-                      <li><a className={styles.dropdownItem} href="#professional-dev">Professional Development</a></li>
-                      <li><a className={styles.dropdownItem} href="#research">Research</a></li>
+                      <li><a className={styles.dropdownItem} href="/cte">Career Technical Education</a></li>
+                      <li><a className={styles.dropdownItem} href="/educator-prep">Educator Preparation</a></li>
+                      <li><a className={styles.dropdownItem} href="/field-work">Field Work</a></li>
+                      <li><a className={styles.dropdownItem} href="/professional-dev">Professional Development</a></li>
+                      <li><a className={styles.dropdownItem} href="/use-case-research">Research</a></li>
                     </ul>
                   </div>
                 </div>

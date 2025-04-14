@@ -13,32 +13,32 @@ interface IndustriesSectionProps {
 const industries = [
   {
     title: 'Career Technical Education',
-    imageUrl: '/images/cte-bg.jpg',
+    imageUrl: '/images/career-technical-education.jpg',
     description: 'Easy-to-launch, proven strategy for enhancing teacher pipeline clubs and CTE pathways'
   },
   {
     title: 'Education Preparation',
-    imageUrl: '/images/ed-prep-bg.jpg',
+    imageUrl: '/images/educator-preparation.jpg',
     description: 'Cost-effective, validated tool to help candidates translate theory into practice'
   },
   {
     title: 'Field Work',
-    imageUrl: '/images/field-work-bg.jpg',
+    imageUrl: '/images/fieldwork.jpg',
     description: 'Enhance field work, mitigate risk, improve candidate skill and effectiveness'
   },
   {
     title: 'In-Service Educator Professional Development',
-    imageUrl: '/images/prof-dev-bg.jpg',
+    imageUrl: '/images/professional-development.jpg',
     description: 'Support educators where they are with engaging, on-demand, targeted PD'
   },
   {
     title: 'Research',
-    imageUrl: '/images/research-bg.jpg',
+    imageUrl: '/images/research.jpg',
     description: 'The "flight simulator" for research in teaching and learning'
   },
   {
     title: 'Extracurricular & Afterschool Programs',
-    imageUrl: '/images/after-school-bg.jpg',
+    imageUrl: '/images/extracurricular-and-background.jpg',
     description: 'Give tutors, coaches, and aids access to high quality, targeted PD'
   }
 ];
@@ -58,7 +58,10 @@ class IndustriesSection extends React.Component<Props & IndustriesSectionProps> 
             {industries.map((industry, index) => (
               <div key={index} className={styles.industryCardWrapper}>
                 <div className={styles.industryCard}>
-                  <div className={styles.industryCardFront}>
+                  <div 
+                    className={styles.industryCardFront}
+                    style={{ backgroundImage: `url(${industry.imageUrl})` }}
+                  >
                     <h3 className={styles.industryTitle}>{industry.title}</h3>
                   </div>
                   <div className={styles.industryCardBack}>
