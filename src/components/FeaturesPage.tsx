@@ -7,6 +7,24 @@ interface Props extends IntersectionObserverProps {
     className?: string;
 }
 
+interface FeatureCardProps extends IntersectionObserverProps {
+    title: string;
+    description: string;
+    price: string;
+}
+
+const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, price, hasBeenVisible }) => {
+    return (
+        <div className={`${styles.featureCard} ${hasBeenVisible ? styles.visible : ''}`}>
+            <h3>{title}</h3>
+            <p>{description}</p>
+            <span className={styles.price}>{price}</span>
+        </div>
+    );
+};
+
+const ObservedFeatureCard = withIntersectionObserver(FeatureCard);
+
 const FeaturesPage: React.FC<Props> = ({ hasBeenVisible, className }) => {
     const features = [
         {
@@ -81,11 +99,14 @@ const FeaturesPage: React.FC<Props> = ({ hasBeenVisible, className }) => {
                     <h2 className={styles.featuresTitle}>simSchool features include:</h2>
                     <div className={styles.featuresGrid}>
                         {features.map((feature, index) => (
-                            <div key={index} className={styles.featureCard}>
-                                <h3>{feature.title}</h3>
-                                <p>{feature.description}</p>
-                                <span className={styles.price}>{feature.price}</span>
-                            </div>
+                            <ObservedFeatureCard
+                                key={index}
+                                title={feature.title}
+                                description={feature.description}
+                                price={feature.price}
+                                isVisible={false}
+                                hasBeenVisible={false}
+                            />
                         ))}
                     </div>
                 </div>
