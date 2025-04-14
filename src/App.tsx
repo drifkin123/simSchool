@@ -15,6 +15,7 @@ import Footer from './components/Footer';
 import Overview from './components/Overview';
 import FeaturesPage from './components/FeaturesPage';
 import Research from './components/Research';
+import CTE from './components/CTE';
 
 function App() {
   const learnerFeatures = [
@@ -85,6 +86,8 @@ function App() {
             <Route path="/overview" component={Overview} />
             <Route path="/features" component={FeaturesPage} />
             <Route path="/research" component={Research} />
+
+            <Route path="/cte" component={CTE} />
           </Switch>
         </main>
         <Footer />
