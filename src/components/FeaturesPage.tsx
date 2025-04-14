@@ -13,20 +13,23 @@ interface FeatureCardProps extends IntersectionObserverProps {
     price: string;
 }
 
-const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, price, hasBeenVisible }) => {
-    return (
-        <div className={`${styles.featureCard} ${hasBeenVisible ? styles.visible : ''}`}>
-            <h3>{title}</h3>
-            <p>{description}</p>
-            <span className={styles.price}>{price}</span>
-        </div>
-    );
-};
+class FeatureCard extends React.Component<FeatureCardProps> {
+    render() {
+        const { title, description, price, hasBeenVisible } = this.props;
+        return (
+            <div className={`${styles.featureCard} ${hasBeenVisible ? styles.visible : ''}`}>
+                <h3>{title}</h3>
+                <p>{description}</p>
+                <span className={styles.price}>{price}</span>
+            </div>
+        );
+    }
+}
 
 const ObservedFeatureCard = withIntersectionObserver(FeatureCard);
 
-const FeaturesPage: React.FC<Props> = ({ hasBeenVisible, className }) => {
-    const features = [
+class FeaturesPage extends React.Component<Props> {
+    private features = [
         {
             title: '24/7 Web Access',
             description: 'No scheduling necessary',
@@ -70,7 +73,7 @@ const FeaturesPage: React.FC<Props> = ({ hasBeenVisible, className }) => {
         {
             title: 'Custom Modules',
             description: 'Custom designed modules',
-            price: '$500 – $1,500'
+            price: '$500 - $1,500'
         },
         {
             title: 'Custom Rubrics',
@@ -79,40 +82,44 @@ const FeaturesPage: React.FC<Props> = ({ hasBeenVisible, className }) => {
         }
     ];
 
-    return (
-        <section className={`${styles.featuresPage} ${hasBeenVisible ? 'visible' : ''} ${className || ''}`}>
-            <div className={styles.container}>
-                <div className={styles.introSection}>
-                    <h1>simSchool Features</h1>
-                    <p className={styles.introText}>
-                        simSchool's expansive intelligence engine enables any user, anywhere, at any time, to access online modules that can be shared and socialized in synchronous and asynchronous experiences.
-                    </p>
-                    <p className={styles.introText}>
-                        Over 10 trillion virtual learner profiles and 10 trillion virtual instructional tasks power a catalog of 400 modules available free of charge, providing limitless opportunities to explore new disciplines, refine strategies, increase knowledge and skill, and reflect on teaching and learning. Rapid authoring also enables the simSchool team to create new characters, simulations, and observations rubrics custom to the needs of partners.
-                    </p>
-                    <p className={styles.introText}>
-                        simSchool "modules" are fully-self contained, web-based teaching and learning experiences.  They contain embedded resources (including lesson plans), reflection questions, and automated observation reports mapped to teacher preparation and effectiveness standards. Modules can be used as "practical" teaching experiences, as "observation only" experiences in which a candidate watches a video of the simulated classroom being taught (what we call a "Teach Aloud"), or both.
-                    </p>
-                </div>
+    render() {
+        const { hasBeenVisible, className } = this.props;
+        
+        return (
+            <section className={`${styles.featuresPage} ${hasBeenVisible ? 'visible' : ''} ${className || ''}`}>
+                <div className={styles.container}>
+                    <div className={styles.introSection}>
+                        <h1>simSchool Features</h1>
+                        <p className={styles.introText}>
+                            simSchool's expansive intelligence engine enables any user, anywhere, at any time, to access online modules that can be shared and socialized in synchronous and asynchronous experiences.
+                        </p>
+                        <p className={styles.introText}>
+                            Over 10 trillion virtual learner profiles and 10 trillion virtual instructional tasks power a catalog of 400 modules available free of charge, providing limitless opportunities to explore new disciplines, refine strategies, increase knowledge and skill, and reflect on teaching and learning. Rapid authoring also enables the simSchool team to create new characters, simulations, and observations rubrics custom to the needs of partners.
+                        </p>
+                        <p className={styles.introText}>
+                            simSchool "modules" are fully-self contained, web-based teaching and learning experiences.  They contain embedded resources (including lesson plans), reflection questions, and automated observation reports mapped to teacher preparation and effectiveness standards. Modules can be used as "practical" teaching experiences, as "observation only" experiences in which a candidate watches a video of the simulated classroom being taught (what we call a "Teach Aloud"), or both.
+                        </p>
+                    </div>
 
-                <div className={styles.featuresSection}>
-                    <h2 className={styles.featuresTitle}>simSchool features include:</h2>
-                    <div className={styles.featuresGrid}>
-                        {features.map((feature, index) => (
-                            <ObservedFeatureCard
-                                key={index}
-                                title={feature.title}
-                                description={feature.description}
-                                price={feature.price}
-                                isVisible={false}
-                                hasBeenVisible={false}
-                            />
-                        ))}
+                    <div className={styles.featuresSection}>
+                        <h2 className={styles.featuresTitle}>simSchool features include:</h2>
+                        <div className={styles.featuresGrid}>
+                            {this.features.map((feature, index) => (
+                                <ObservedFeatureCard
+                                    key={index}
+                                    title={feature.title}
+                                    description={feature.description}
+                                    price={feature.price}
+                                    isVisible={false}
+                                    hasBeenVisible={false}
+                                />
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    );
-};
+            </section>
+        );
+    }
+}
 
 export default withIntersectionObserver(FeaturesPage); 
