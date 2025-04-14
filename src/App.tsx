@@ -18,6 +18,8 @@ import Research from './components/Research';
 import CTE from './components/CTE';
 import EducatorPrep from './components/EducatorPrep';
 import FieldWork from './components/FieldWork';
+import ProfessionalDev from './components/ProfessionalDev';
+import Extracirricular from './components/Extracirricular';
 
 function App() {
   const learnerFeatures = [
@@ -92,6 +94,8 @@ function App() {
             <Route path="/cte" component={CTE} />
             <Route path="/educator-prep" component={EducatorPrep} />
             <Route path="/field-work" component={FieldWork} />
+            <Route path="/professional-dev" component={ProfessionalDev} />
+            <Route path="/extracurricular" component={Extracirricular} />
           </Switch>
         </main>
         <Footer />

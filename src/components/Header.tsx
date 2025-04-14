@@ -116,7 +116,8 @@ class Header extends Component<{}, State> {
                       <li><a className={styles.dropdownItem} href="/educator-prep">Educator Preparation</a></li>
                       <li><a className={styles.dropdownItem} href="/field-work">Field Work</a></li>
                       <li><a className={styles.dropdownItem} href="/professional-dev">Professional Development</a></li>
-                      <li><a className={styles.dropdownItem} href="/use-case-research">Research</a></li>
+                      <li><a className={styles.dropdownItem} href="/extracurricular">Extracurricular / After School Programs</a></li>
+                      <li><a className={styles.dropdownItem} href="/research">Research</a></li>
                     </ul>
                   </div>
                 </div>
