@@ -16,6 +16,8 @@ import Overview from './components/Overview';
 import FeaturesPage from './components/FeaturesPage';
 import Research from './components/Research';
 import CTE from './components/CTE';
+import EducatorPrep from './components/EducatorPrep';
+import FieldWork from './components/FieldWork';
 
 function App() {
   const learnerFeatures = [
@@ -60,11 +62,11 @@ function App() {
       <LoopingLogos />
       <ChooseSimSchool />
       <ContactUs />
-      <Features 
+      <Features
         Title={<h2 className={stylesFeatures.sectionTitle}>What <strong>Learners</strong> do with simSchool</h2>}
         features={learnerFeatures}
       />
-      <Features 
+      <Features
         Title={<h2 className={stylesFeatures.sectionTitle}>What <strong>Institutions</strong> do with simSchool</h2>}
         features={institutionFeatures}
         className="whiteBg"
@@ -75,7 +77,7 @@ function App() {
       <NumbersSection />
     </>
   );
-  
+
   return (
     <Router>
       <div className="App">
@@ -88,6 +90,8 @@ function App() {
             <Route path="/research" component={Research} />
 
             <Route path="/cte" component={CTE} />
+            <Route path="/educator-prep" component={EducatorPrep} />
+            <Route path="/field-work" component={FieldWork} />
           </Switch>
         </main>
         <Footer />
