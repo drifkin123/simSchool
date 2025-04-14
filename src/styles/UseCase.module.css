@@ -1,7 +1,7 @@
 .cteContainer {
     max-width: 1200px;
     margin: 80px auto 0;
-    padding: 2rem;
+    padding: 2rem 2rem 0;
 }
 
 .header {
@@ -201,7 +201,7 @@
 
 @media (max-width: 768px) {
     .cteContainer {
-        padding: 1rem;
+        padding: 1rem 1rem 0;
     }
 
     .header h1 {
@@ -222,12 +222,16 @@
         min-height: 300px;
     }
 
+    .quoteContent {
+        padding: 40px;
+    }
+
     .quote {
         padding: 2rem;
     }
 
     .quoteSymbol {
         font-size: 80px;
-        top: -30px;
+        top: -20px;
     }
 }

@@ -15,7 +15,7 @@ class QuoteSection extends React.Component<QuoteSectionProps> {
                 <div className={`${styles.quoteContent} ${this.props.isVisible ? styles.visible : ''}`}>
                     <blockquote className={styles.quote}>
                         <span className={styles.quoteSymbol}>"</span>
-                        <p>"{this.props.quote}"</p>
+                        <p>{this.props.quote}</p>
                         <footer>
                             <cite>{this.props.quoteAuthor}</cite>
                         </footer>
