@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import styles from '../styles/CTE.module.css';
+import styles from '../styles/UseCase.module.css';
 
 const CTE: React.FC = () => {
     const quoteRef = useRef<HTMLDivElement>(null);

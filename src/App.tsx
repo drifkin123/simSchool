@@ -15,11 +15,11 @@ import Footer from './components/Footer';
 import Overview from './components/Overview';
 import FeaturesPage from './components/FeaturesPage';
 import Research from './components/Research';
-import CTE from './components/CTE';
 import EducatorPrep from './components/EducatorPrep';
 import FieldWork from './components/FieldWork';
 import ProfessionalDev from './components/ProfessionalDev';
 import Extracirricular from './components/Extracirricular';
+import UseCase from './components/UseCase';
 
 function App() {
   const learnerFeatures = [
@@ -58,6 +58,34 @@ function App() {
     }
   ];
 
+  const cteProps = {
+    title: "Career Technical Education",
+    description: ["For middle and high school students exploring teaching as a CTE pathway, it is often difficult or prohibitive to provide live in-classroom observation and field experience, and frequently hands-on teaching is rare.", "simSchool simulations provide that live engagement, giving CTE students a change to teach their own simulated students, reflect, and even develop confidence in collaborating with peers in discussing simStudent needs and teaching strategies, laying a groundwork for future participation in peer learning communities."],
+    benefitsTitle: "Benefits Of simSchool For Future Teaching Development and CTE Pathways",
+    benefitsDescription: ["With simSchool, career technical education programs have a convenient, safe solution for providing required field work hours and catalyzing in-class discussion.", "For LEAs and educator preparation programs seeking an easy-to-launch, effective, strategy for enhancing teacher pipeline clubs and pathways, simSchool offers a meaningful solution."],
+    benefits: [
+      {
+        title: 'Cost-Effective',
+        description: 'An annual simSchool license is about the same cost as a consumable workbook and offers unlimited replay and use ($30 USD per user per year for unlimited use)'
+      },
+      {
+        title: 'Personalized Automated Feedback',
+        description: 'simSchool observation reports highlight the strengths users exhibit in decision-making and reveal opportunities for improvement'
+      },
+      {
+        title: 'Transparent Reporting Fostering Quality Improvement and Targeted Mentoring',
+        description: 'simSchool provides rich real-time reports and dashboards to all users – from student learners up to institutional administrators. Granular reports automatically mapped to the effectiveness frameworks institutions use enable just-in-time coaching intervention and inform continuous quality improvement.'
+      },
+      {
+        title: 'Research Shows Learner Improvement',
+        description: 'Recent research conducted at the University of North Texas revealed that CTE students who used simSchool simulations for a minimum of four hours over a semester showed measurable increases in resilience.'
+      }
+    ],
+    image: "/images/career-technical-education.jpg",
+    quote: "When high school students in Teacher Cadet clubs in Pennsylvania utilized simSchool, we found that their knowledge and understanding of the practice of teaching exceeded what we often see in our incoming undergraduates. Being actively engaged in problem-solving and decision-making forced a 'need to know' urgency that drove engagement and skills development.",
+    quoteAuthor: "Dr. Liz Azukas, East Stroudsberg University"
+  }
+
   const HomePage = () => (
     <>
       <Hero />
@@ -91,7 +119,7 @@ function App() {
             <Route path="/features" component={FeaturesPage} />
             <Route path="/research" component={Research} />
 
-            <Route path="/cte" component={CTE} />
+            <Route path="/cte" component={() => <UseCase {...cteProps} />} />
             <Route path="/educator-prep" component={EducatorPrep} />
             <Route path="/field-work" component={FieldWork} />
             <Route path="/professional-dev" component={ProfessionalDev} />

@@ -13,8 +13,8 @@ interface ResearchStudy {
     keywords: string[];
 }
 
-const Research: React.FC = () => {
-    const studies: ResearchStudy[] = [
+class Research extends React.Component {
+    private studies: ResearchStudy[] = [
         {
             id: 1,
             title: "The Impact of an example article",
@@ -50,51 +50,53 @@ const Research: React.FC = () => {
         }
     ];
 
-    return (
-        <div className={styles.researchContainer}>
-            <header className={styles.header}>
-                <h1>Research</h1>
-                <p className={styles.intro}>
-                    simSchool's real-time authoring, granular data collection, and robust reporting and analysis enable researchers to explore complex questions with efficiency. Internal observations and algorithms can be mapped to address specific areas of research exploration safely and often without the need to observe teachers in live classroom settings.
-                </p>
-                <blockquote className={styles.quote}>
-                    <p>"(The cycles of decision-making in simSchool), experimentation and refinement directly contribute to students' development of core teaching skills aligned with the APST. In all cases, simulation informed reflective practice where students analyse their performance and outcomes, facilitating deeper understanding and continuous improvement"</p>
-                    <footer>
-                        <cite>Drs. Erika Spray, Natasha Kett, Nate Rutherford, Tess Rendoth, University of Newcastle</cite>
-                    </footer>
-                </blockquote>
-            </header>
+    render() {
+        return (
+            <div className={styles.researchContainer}>
+                <header className={styles.header}>
+                    <h1>Research</h1>
+                    <p className={styles.intro}>
+                        simSchool's real-time authoring, granular data collection, and robust reporting and analysis enable researchers to explore complex questions with efficiency. Internal observations and algorithms can be mapped to address specific areas of research exploration safely and often without the need to observe teachers in live classroom settings.
+                    </p>
+                    <blockquote className={styles.quote}>
+                        <p>"(The cycles of decision-making in simSchool), experimentation and refinement directly contribute to students' development of core teaching skills aligned with the APST. In all cases, simulation informed reflective practice where students analyse their performance and outcomes, facilitating deeper understanding and continuous improvement"</p>
+                        <footer>
+                            <cite>Drs. Erika Spray, Natasha Kett, Nate Rutherford, Tess Rendoth, University of Newcastle</cite>
+                        </footer>
+                    </blockquote>
+                </header>
 
-            <section className={styles.recentStudies}>
-                <div className={styles.recentStudiesContent}>
-                    <h2>Recently Published Studies</h2>
-                    <div className={styles.studiesGrid}>
-                        {studies.map((study) => (
-                            <article key={study.id} className={styles.studyCard}>
-                                <div className={styles.studyImage}>
-                                    <img src={study.image} alt={study.title} />
-                                </div>
-                                <div className={styles.studyContent}>
-                                    <h3>{study.title}</h3>
-                                    <p className={styles.authors}>{study.authors}</p>
-                                    <p className={styles.institution}>{study.institution} • {study.year}</p>
-                                    <p className={styles.abstract}>{study.abstract}</p>
-                                    <div className={styles.keywords}>
-                                        {study.keywords.map((keyword, index) => (
-                                            <span key={index} className={styles.keyword}>{keyword}</span>
-                                        ))}
+                <section className={styles.recentStudies}>
+                    <div className={styles.recentStudiesContent}>
+                        <h2>Recently Published Studies</h2>
+                        <div className={styles.studiesGrid}>
+                            {this.studies.map((study) => (
+                                <article key={study.id} className={styles.studyCard}>
+                                    <div className={styles.studyImage}>
+                                        <img src={study.image} alt={study.title} />
                                     </div>
-                                    <a href={study.pdfUrl} className={styles.downloadButton} target="_blank" rel="noopener noreferrer">
-                                        Download PDF
-                                    </a>
-                                </div>
-                            </article>
-                        ))}
+                                    <div className={styles.studyContent}>
+                                        <h3>{study.title}</h3>
+                                        <p className={styles.authors}>{study.authors}</p>
+                                        <p className={styles.institution}>{study.institution} • {study.year}</p>
+                                        <p className={styles.abstract}>{study.abstract}</p>
+                                        <div className={styles.keywords}>
+                                            {study.keywords.map((keyword, index) => (
+                                                <span key={index} className={styles.keyword}>{keyword}</span>
+                                            ))}
+                                        </div>
+                                        <a href={study.pdfUrl} className={styles.downloadButton} target="_blank" rel="noopener noreferrer">
+                                            Download PDF
+                                        </a>
+                                    </div>
+                                </article>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            </section>
-        </div>
-    );
-};
+                </section>
+            </div>
+        );
+    }
+}
 
 export default Research; 
