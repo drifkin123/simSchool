@@ -1,19 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styles from '../styles/Overview.module.css';
-import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
+import withIntersectionObserver from '../hocs/withIntersectionObserver';
 
-const Overview: React.FC = () => {
-    const visionMissionRef = useIntersectionObserver();
-    const historyRef = useIntersectionObserver();
-    const whatUsersDoRef = useIntersectionObserver();
-    const howUsersImproveRef = useIntersectionObserver();
+interface SectionProps {
+    isVisible: boolean;
+    hasBeenVisible: boolean;
+}
 
-    return (
-        <div className={styles.overview}>
-            <section
-                ref={visionMissionRef.elementRef}
-                className={`${styles.visionMission} ${visionMissionRef.isVisible ? styles.visible : ''}`}
-            >
+class VisionMissionSection extends Component<SectionProps> {
+    render() {
+        const { isVisible } = this.props;
+        return (
+            <section className={`${styles.visionMission} ${isVisible ? styles.visible : ''}`}>
                 <div className={styles.vision}>
                     <h2>Our Vision</h2>
                     <p>A future where every educator is prepared for the full range of student learning needs, challenges, and strengths they may encounter. A future where every educator has access to personalized training when they need it, wherever they are, at a cost that makes unlimited access possible and reasonable.</p>
@@ -23,22 +21,30 @@ const Overview: React.FC = () => {
                     <p>To provide dynamic simulations that enable educators at all stages of their professional journey to practice, to reflect, and to gain actionable personal insights that foster self-reflective practice, responsive pedagogy, and improve teaching and learning for all.</p>
                 </div>
             </section>
+        );
+    }
+}
 
-            <section
-                ref={historyRef.elementRef}
-                className={`${styles.history} ${historyRef.isVisible ? styles.visible : ''}`}
-            >
+class HistorySection extends Component<SectionProps> {
+    render() {
+        const { isVisible } = this.props;
+        return (
+            <section className={`${styles.history} ${isVisible ? styles.visible : ''}`}>
                 <h2>Our History</h2>
                 <p><strong>The theoretical concept for simSchool™ was born during an aspirational conversation between learning scientists and teachers from Texas and Vermont at a SITE Conference back in 2005.</strong></p>
                 <p><strong>The questions were bold:</strong> was it possible to create a simulation tool that could be for teachers what <strong>flight simulators</strong> are to pilots – risk-free, data-rich environments providing just-in-time deep learning experiences and real-time, automated personalized feedback?</p>
                 <p>How would you create simulated students with complex, authentic cognitive and emotional profiles? What feedback would educators need, and how much simulated decision-making would they need to do, for the experience to improve self-reflective practice, pedagogical skill, and resilience?</p>
                 <p>Over the course of <strong>20 years</strong>, near continuous study around the world, over $15 million in research funding, and six major platform versions, we have clear answers to those questions as simSchool has emerged as the most widely researched and validated simulation in educator development: <strong>yes, it is possible, and, yes, using simSchool does improve educator effectiveness in real, measurable ways.</strong></p>
             </section>
+        );
+    }
+}
 
-            <section
-                ref={whatUsersDoRef.elementRef}
-                className={`${styles.whatUsersDo} ${whatUsersDoRef.isVisible ? styles.visible : ''}`}
-            >
+class WhatUsersDoSection extends Component<SectionProps> {
+    render() {
+        const { isVisible } = this.props;
+        return (
+            <section className={`${styles.whatUsersDo} ${isVisible ? styles.visible : ''}`}>
                 <h2>What Users Do</h2>
                 <p><strong>simSchool Modules</strong> simulate the process teachers should use in live classrooms: plan, teach, reflect, improve.</p>
                 <div className={styles.steps}>
@@ -60,11 +66,15 @@ const Overview: React.FC = () => {
                     </div>
                 </div>
             </section>
+        );
+    }
+}
 
-            <section
-                ref={howUsersImproveRef.elementRef}
-                className={`${styles.howUsersImprove} ${howUsersImproveRef.isVisible ? styles.visible : ''}`}
-            >
+class HowUsersImproveSection extends Component<SectionProps> {
+    render() {
+        const { isVisible } = this.props;
+        return (
+            <section className={`${styles.howUsersImprove} ${isVisible ? styles.visible : ''}`}>
                 <h2>How Users Improve</h2>
                 <p>Feedback is central to the simSchool experience. Institutions may choose by what professional effectiveness standards candidates and educators will be "observed" in simulations.</p>
 
@@ -107,8 +117,27 @@ const Overview: React.FC = () => {
                     <p className={styles.researchLink}>Visit our Research page for recently published studies.</p>
                 </div>
             </section>
-        </div>
-    );
-};
+        );
+    }
+}
+
+// Create observed versions of each section
+const ObservedVisionMission = withIntersectionObserver(VisionMissionSection);
+const ObservedHistory = withIntersectionObserver(HistorySection);
+const ObservedWhatUsersDo = withIntersectionObserver(WhatUsersDoSection);
+const ObservedHowUsersImprove = withIntersectionObserver(HowUsersImproveSection);
+
+class Overview extends Component {
+    render() {
+        return (
+            <div className={styles.overview}>
+                <ObservedVisionMission isVisible={false} hasBeenVisible={false} />
+                <ObservedHistory isVisible={false} hasBeenVisible={false} />
+                <ObservedWhatUsersDo isVisible={false} hasBeenVisible={false} />
+                <ObservedHowUsersImprove isVisible={false} hasBeenVisible={false} />
+            </div>
+        );
+    }
+}
 
 export default Overview; 
