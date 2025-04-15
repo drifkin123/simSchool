@@ -189,7 +189,7 @@ function App() {
         description: 'simSchool provides rich real-time reports and dashboards to all users – from staff to HR to administrators, providing unparalleled opportunities to observe what staff know about student learning and emotional behaviors and what additional training is required'
       },
     ],
-    image: "/images/extracurricular",
+    image: "/images/extracurricular.jpg",
     quote: "\"This simulation gave me the opportunity to practice multiple techniques and strategies without having to worry about real life consequences. I was also able to practice with many different learning environments – so different ages and ability levels of students – and I could also focus on a specific area of need so that if I wanted to practice and analyze the effect that (my choices) have on students I could also do that within the simulation.\"",
     quoteAuthor: "Emily Bellrose, Central Valley of California"
   }
