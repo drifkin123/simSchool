@@ -1,11 +1,7 @@
 import React from 'react';
 import styles from '../styles/LoopingLogos.module.css';
-import withIntersectionObserver from '../hocs/withIntersectionObserver';
-import { IntersectionObserverProps } from '../types/IntersectionObserver';
 
-interface Props { }
-
-class LoopingLogos extends React.Component<Props & IntersectionObserverProps> {
+class LoopingLogos extends React.Component {
   private logos = [
     <img src="/university-logos/upb-logo-en.svg" alt="UPB" key="upb" />,
     <img src="/university-logos/uon-logo-square.svg" alt="University of Nairobi" key="uon" />,
@@ -47,8 +43,6 @@ class LoopingLogos extends React.Component<Props & IntersectionObserverProps> {
   ];
 
   render() {
-    const { hasBeenVisible } = this.props;
-
     return (
       <div>
         <h3 className={styles.title}>The simSchool Global Community</h3>
@@ -78,4 +72,4 @@ class LoopingLogos extends React.Component<Props & IntersectionObserverProps> {
   }
 }
 
-export default withIntersectionObserver(LoopingLogos);
+export default LoopingLogos;

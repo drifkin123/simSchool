@@ -17,7 +17,7 @@ const industries = [
     description: 'Easy-to-launch, proven strategy for enhancing teacher pipeline clubs and CTE pathways'
   },
   {
-    title: 'Education Preparation',
+    title: 'Educator Preparation',
     imageUrl: '/images/educator-preparation.jpg',
     description: 'Cost-effective, validated tool to help candidates translate theory into practice'
   },
@@ -38,7 +38,7 @@ const industries = [
   },
   {
     title: 'Extracurricular & Afterschool Programs',
-    imageUrl: '/images/extracurricular-and-background.jpg',
+    imageUrl: '/images/extracurricular.jpg',
     description: 'Give tutors, coaches, and aids access to high quality, targeted PD'
   }
 ];
