@@ -122,31 +122,10 @@ class Header extends Component<{}, State> {
                   </div>
                 </div>
               </li>
-              <li
-                className={classNames(styles.dropdownTrigger, { [styles.active]: activeDropdowns.includes(NavOptions.Pricing) })}
-                onMouseEnter={() => this.handleDropdownEnter(NavOptions.Pricing)}
-                onMouseLeave={this.handleDropdownLeave}
-              >
-                <button
-                  className={classNames(styles.parentItem, { [styles.isMobile]: isMobile })}
-                  onClick={(e) => {
-                    if (isMobile) {
-                      e.preventDefault();
-                      this.toggleMobileDropdown(NavOptions.Pricing);
-                    }
-                  }}
-                >
+              <li>
+                <a href="/pricing" className={styles.parentItem}>
                   Pricing
-                  <span className={styles.dropdownArrow}></span>
-                </button>
-                <div className={classNames(styles.dropdownMenu, { [styles.active]: activeDropdowns.includes(NavOptions.Pricing) })}>
-                  <ul className={styles.dropdownSectionList}>
-                    <li><a className={styles.dropdownItem} href="#teacher-prep">Teacher Preparation</a></li>
-                    <li><a className={styles.dropdownItem} href="#professional-dev">Professional Development</a></li>
-                    <li><a className={styles.dropdownItem} href="#cte">Career Technical Education</a></li>
-                    <li><a className={styles.dropdownItem} href="#research">Research</a></li>
-                  </ul>
-                </div>
+                </a>
               </li>
               <li
                 className={classNames(styles.dropdownTrigger, { [styles.active]: activeDropdowns.includes(NavOptions.Resources) })}

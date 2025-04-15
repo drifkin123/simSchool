@@ -42,6 +42,11 @@
 
 .tableRow {
     border-bottom: 1px solid #dee2e6;
+    transition: background-color 0.2s ease;
+}
+
+.tableRow:hover {
+    background-color: #f8f9fa;
 }
 
 .tableRow:last-child {
@@ -89,6 +94,10 @@
 
     .tableHeader tr {
         display: block;
+    }
+
+    .tableRow:hover {
+        background-color: white;
     }
 
     .tableHeader th:first-child {
