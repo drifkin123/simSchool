@@ -16,7 +16,7 @@ import Overview from './components/Overview';
 import FeaturesPage from './components/FeaturesPage';
 import Research from './components/Research';
 import UseCase from './components/UseCase';
-
+import Pricing from './components/Pricing';
 function App() {
   const learnerFeatures = [
     {
@@ -232,6 +232,8 @@ function App() {
             <Route path="/field-work" component={() => <UseCase {...fieldWorkProps} />} />
             <Route path="/professional-dev" component={() => <UseCase {...professionalDevProps} />} />
             <Route path="/extracurricular" component={() => <UseCase {...extracurricularProps} />} />
+
+            <Route path="/pricing" component={Pricing} />
           </Switch>
         </main>
         <Footer />

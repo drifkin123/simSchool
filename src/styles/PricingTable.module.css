@@ -1,0 +1,129 @@
+/* Overall container styling */
+.licensePlans {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.licensePlans h1 {
+    color: #1a202c;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+.licensePlans h2 {
+    color: #2d3748;
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.licensePlans p {
+    color: #4a5568;
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    max-width: 800px;
+}
+
+/* Container for each table section */
+.tableContainer {
+    margin-bottom: 80px;
+    overflow-x: auto;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+}
+
+/* Generic table styling */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 20px 24px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+    background-color: #f8fafc;
+    color: #2d3748;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Feature cells styling */
+.featureCell {
+    font-weight: 600;
+    color: #2d3748;
+    background-color: #f8fafc;
+    width: 30%;
+}
+
+/* Price row styling */
+tr:last-child td {
+    font-weight: 700;
+    color: #2d3748;
+    background-color: #f8fafc;
+    font-size: 1.1rem;
+}
+
+/* Checkmark styling */
+td:not(.featureCell) {
+    color: #4a5568;
+    font-size: 1rem;
+}
+
+td:not(.featureCell):empty::before {
+    content: "—";
+    color: #cbd5e0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .licensePlans {
+        margin: 30px auto;
+        padding: 0 15px;
+    }
+
+    .licensePlans h1 {
+        font-size: 2rem;
+    }
+
+    .licensePlans h2 {
+        font-size: 1.5rem;
+    }
+
+    .tableContainer {
+        padding: 20px;
+        margin-bottom: 40px;
+    }
+
+    th,
+    td {
+        padding: 15px;
+    }
+
+    .featureCell {
+        width: 40%;
+    }
+}
