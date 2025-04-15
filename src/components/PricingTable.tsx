@@ -122,31 +122,31 @@ class SimSchoolLicensePlans extends Component<{}, SimSchoolLicensePlansState> {
         ];
 
         const Checkmark = () => (
-            <span style={{ color: "#4CAF50", fontSize: "1.2em", fontWeight: "bold" }}>✓</span>
+            <span className={styles.checkmark}>✓</span>
         );
 
         return (
             <div className={styles.tableContainer}>
-                <h2>Per User Plans</h2>
-                <p>
+                <h2 className={styles.tableTitle}>Per User Plans</h2>
+                <p className={styles.tableDescription}>
                     Good for Rapid Setup and Integration when Additional Services and Reporting Aren't Currently Needed
                 </p>
-                <table className={styles.perUserTable}>
-                    <thead>
+                <table className={styles.table}>
+                    <thead className={styles.tableHeader}>
                         <tr>
-                            <th>Feature</th>
-                            {headerColumns.map((col, index) => (
-                                <th key={index}>{col}</th>
+                            <th></th>
+                            {headerColumns.map((column, index) => (
+                                <th key={index}>{column}</th>
                             ))}
                         </tr>
                     </thead>
                     <tbody>
                         {this.state.perUserPlans.map((row, rowIndex) => (
-                            <tr key={rowIndex}>
+                            <tr key={rowIndex} className={styles.tableRow}>
                                 <td className={styles.featureCell}>{row.feature}</td>
-                                {row.columns.map((cell, cellIndex) => (
-                                    <td key={cellIndex}>
-                                        {cell === "X" ? <Checkmark /> : cell}
+                                {row.columns.map((column, colIndex) => (
+                                    <td key={colIndex} className={styles.tableCell}>
+                                        {column === "X" ? <Checkmark /> : column}
                                     </td>
                                 ))}
                             </tr>
@@ -159,28 +159,22 @@ class SimSchoolLicensePlans extends Component<{}, SimSchoolLicensePlansState> {
 
     renderInstitutionalLicenseTable() {
         const Checkmark = () => (
-            <span style={{ color: "#4CAF50", fontSize: "1.2em", fontWeight: "bold" }}>✓</span>
+            <span className={styles.checkmark}>✓</span>
         );
 
         return (
             <div className={styles.tableContainer}>
-                <h2>Institutional License</h2>
-                <p>
+                <h2 className={styles.tableTitle}>Institutional License</h2>
+                <p className={styles.tableDescription}>
                     Good for Institutions with more than 100 learners, additional tech requirements, and/or advanced instructional and reporting needs (particularly during accreditation cycles)
                 </p>
-                <h3>All Institutions and Organizations</h3>
-                <table className={styles.institutionalTable}>
-                    <thead>
-                        <tr>
-                            <th>Feature</th>
-                            <th>Availability</th>
-                        </tr>
-                    </thead>
+                <h3 className={styles.tableTitle}>All Institutions and Organizations</h3>
+                <table className={styles.table}>
                     <tbody>
-                        {this.state.institutionalLicense.map((row, rowIndex) => (
-                            <tr key={rowIndex}>
+                        {this.state.institutionalLicense.map((row, index) => (
+                            <tr key={index} className={styles.tableRow}>
                                 <td className={styles.featureCell}>{row.feature}</td>
-                                <td>
+                                <td className={styles.tableCell}>
                                     {row.value === "X" ? <Checkmark /> : row.value}
                                 </td>
                             </tr>
@@ -193,7 +187,7 @@ class SimSchoolLicensePlans extends Component<{}, SimSchoolLicensePlansState> {
 
     render() {
         return (
-            <div className={styles.licensePlans}>
+            <div className={styles.pricingContainer}>
                 <h1>simSchool License Plans</h1>
                 {this.renderPerUserPlansTable()}
                 {this.renderInstitutionalLicenseTable()}

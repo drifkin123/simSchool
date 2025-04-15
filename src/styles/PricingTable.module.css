@@ -1,129 +1,150 @@
-/* Overall container styling */
-.licensePlans {
+.pricingContainer {
     max-width: 1200px;
-    margin: 60px auto;
-    padding: 0 20px;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
-.licensePlans h1 {
-    color: #1a202c;
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 2.5rem;
-    text-align: center;
-}
-
-.licensePlans h2 {
-    color: #2d3748;
-    font-size: 1.75rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-}
-
-.licensePlans p {
-    color: #4a5568;
-    font-size: 1.1rem;
-    margin-bottom: 2.5rem;
-    line-height: 1.6;
-    max-width: 800px;
-}
-
-/* Container for each table section */
 .tableContainer {
-    margin-bottom: 80px;
-    overflow-x: auto;
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    padding: 30px;
+    margin-bottom: 3rem;
 }
 
-/* Generic table styling */
-table {
+.tableTitle {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.tableDescription {
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.table {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    margin-top: 20px;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-th,
-td {
-    padding: 20px 24px;
-    text-align: left;
-    border-bottom: 1px solid #e2e8f0;
-}
-
-th {
-    background-color: #f8fafc;
-    color: #2d3748;
+.tableHeader {
+    background-color: #f8f9fa;
+    color: #2c3e50;
     font-weight: 600;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border-bottom: 2px solid #e2e8f0;
 }
 
-tr:last-child td {
+.tableHeader th {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.tableRow {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.tableRow:last-child {
     border-bottom: none;
 }
 
-tr:hover {
-    background-color: #f8fafc;
+.tableCell {
+    padding: 1rem;
+    text-align: left;
 }
 
-/* Feature cells styling */
 .featureCell {
+    font-weight: 500;
+    color: #2c3e50;
+    background-color: #f8f9fa;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+}
+
+.checkmark {
+    color: #4CAF50;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.priceCell {
     font-weight: 600;
-    color: #2d3748;
-    background-color: #f8fafc;
-    width: 30%;
+    color: #2c3e50;
+    background-color: #f8f9fa;
 }
 
-/* Price row styling */
-tr:last-child td {
-    font-weight: 700;
-    color: #2d3748;
-    background-color: #f8fafc;
-    font-size: 1.1rem;
-}
-
-/* Checkmark styling */
-td:not(.featureCell) {
-    color: #4a5568;
-    font-size: 1rem;
-}
-
-td:not(.featureCell):empty::before {
-    content: "—";
-    color: #cbd5e0;
-}
-
-/* Responsive adjustments */
+/* Mobile styles */
 @media (max-width: 768px) {
-    .licensePlans {
-        margin: 30px auto;
-        padding: 0 15px;
+    .table {
+        display: block;
     }
 
-    .licensePlans h1 {
-        font-size: 2rem;
+    .tableHeader {
+        display: block;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
     }
 
-    .licensePlans h2 {
-        font-size: 1.5rem;
+    .tableHeader tr {
+        display: block;
     }
 
+    .tableHeader th:first-child {
+        display: none;
+    }
+
+    .tableHeader th {
+        display: inline-block;
+        width: 25%;
+        padding: 1rem;
+        text-align: center;
+        border-right: 1px solid #dee2e6;
+        border-bottom: none;
+    }
+
+    .tableHeader th:last-child {
+        border-right: none;
+    }
+
+    .tableRow {
+        display: block;
+        margin-bottom: 0;
+        border: 1px solid #dee2e6;
+        border-radius: 0;
+        overflow: hidden;
+    }
+
+    .tableRow:last-child {
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .tableRow .featureCell {
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #dee2e6;
+        font-weight: 600;
+    }
+
+    .tableRow .tableCell:not(.featureCell) {
+        display: inline-block;
+        width: 25%;
+        padding: 1rem;
+        text-align: center;
+        border-right: 1px solid #dee2e6;
+    }
+
+    .tableRow .tableCell:not(.featureCell):last-child {
+        border-right: none;
+    }
+
+    /* Make sure the table doesn't overflow horizontally */
     .tableContainer {
-        padding: 20px;
-        margin-bottom: 40px;
-    }
-
-    th,
-    td {
-        padding: 15px;
-    }
-
-    .featureCell {
-        width: 40%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
 }
