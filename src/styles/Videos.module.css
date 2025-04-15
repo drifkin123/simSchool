@@ -1,0 +1,110 @@
+.videosContainer {
+  max-width: 1200px;
+  margin: 80px auto 0;
+  padding: 2rem;
+}
+
+.section {
+  margin-bottom: 4rem;
+}
+
+.section h1 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.videoGrid,
+.resourceGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.videoCard,
+.resourceCard {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.videoCard:hover,
+.resourceCard:hover {
+  transform: translateY(-4px);
+}
+
+.videoCard a,
+.resourceCard a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.thumbnailContainer {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+  background: #f0f0f0;
+}
+
+.thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.playButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.videoCard:hover .playButton {
+  opacity: 1;
+}
+
+.videoCard h3,
+.resourceCard h3 {
+  padding: 1rem;
+  margin: 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.resourceCard {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.pdfIcon {
+  margin-bottom: 1rem;
+}
+
+.resourceCard p {
+  margin: 0.5rem 0 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .videoGrid,
+  .resourceGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .videosContainer {
+    padding: 1rem;
+  }
+} 

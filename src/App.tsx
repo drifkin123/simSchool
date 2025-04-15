@@ -17,6 +17,8 @@ import FeaturesPage from './components/FeaturesPage';
 import Research from './components/Research';
 import UseCase from './components/UseCase';
 import Pricing from './components/Pricing';
+import Videos from './components/Videos';
+
 function App() {
   const learnerFeatures = [
     {
@@ -112,7 +114,7 @@ function App() {
 
   const fieldWorkProps = {
     title: "Field Work",
-    description: ["For educator preparation programs, placing candidates in field work experiences that ensure consistent exposure to varied learners and diverse conditions can be challenging and, in the case of natural disasters and other unforeseen health and other circumstances, impossible or prohibitively challenging.", "simSchool simulations provide that predictable, easy-to-access, quality-controlled experience that, minute for minute, can be tracked as verified field hours. Not only can this provide a valuable time and cost-saving alternative or compliment to live field work, but simSchool’s robust and transparent personalized data reports give field coordinators a tool for discussion and targeted coaching with candidates."],
+    description: ["For educator preparation programs, placing candidates in field work experiences that ensure consistent exposure to varied learners and diverse conditions can be challenging and, in the case of natural disasters and other unforeseen health and other circumstances, impossible or prohibitively challenging.", "simSchool simulations provide that predictable, easy-to-access, quality-controlled experience that, minute for minute, can be tracked as verified field hours. Not only can this provide a valuable time and cost-saving alternative or compliment to live field work, but simSchool's robust and transparent personalized data reports give field coordinators a tool for discussion and targeted coaching with candidates."],
     benefitsTitle: "Benefits Of simSchool For Field Work",
     benefitsDescription: ["With simSchool, EPPs have a convenient, cost-effective strategy for enhancing candidate field work that mitigates risk, improves personalized data, and supports the observation process"],
     benefits: [
@@ -168,9 +170,9 @@ function App() {
 
   const extracurricularProps = {
     title: "Extracurricular / After School Programs",
-    description: ["simSchool AI-informed simulations are visually situated in classroom environments, libraries, media centers, art rooms, and more. Not only do classroom educators benefit from use, but mentors, coaches, club sponsors, tutors, afterschool staff, and even caregivers – any member of a youth’s ecosystem of learning and social life — can benefit from increasing knowledge, skill, trauma-informed practice, social and emotional learning, and more."],
+    description: ["simSchool AI-informed simulations are visually situated in classroom environments, libraries, media centers, art rooms, and more. Not only do classroom educators benefit from use, but mentors, coaches, club sponsors, tutors, afterschool staff, and even caregivers – any member of a youth's ecosystem of learning and social life — can benefit from increasing knowledge, skill, trauma-informed practice, social and emotional learning, and more."],
     benefitsTitle: "Benefits Of simSchool For Extracurricular & Afterschool Programming Staff Training",
-    benefitsDescription: ["Providing all individuals in a student’s community with access to high quality, meaningful training in personalized teaching and learning strategies"],
+    benefitsDescription: ["Providing all individuals in a student's community with access to high quality, meaningful training in personalized teaching and learning strategies"],
     benefits: [
       {
         title: 'Cost-Effective',
@@ -234,6 +236,8 @@ function App() {
             <Route path="/extracurricular" component={() => <UseCase {...extracurricularProps} />} />
 
             <Route path="/pricing" component={Pricing} />
+
+            <Route path="/videos" component={Videos} />
           </Switch>
         </main>
         <Footer />

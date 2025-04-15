@@ -146,9 +146,9 @@ class Header extends Component<{}, State> {
                 </button>
                 <div className={classNames(styles.dropdownMenu, { [styles.active]: activeDropdowns.includes(NavOptions.Resources) })}>
                   <ul className={styles.dropdownSectionList}>
-                    <li><a className={styles.dropdownItem} href="#content-catalog">Content Catalog</a></li>
-                    <li><a className={styles.dropdownItem} href="#tips-tools">Tips and Tools</a></li>
-                    <li><a className={styles.dropdownItem} href="#video-howtos">Video How-tos</a></li>
+                    <li><a className={styles.dropdownItem} href="/content-catalog">Content Catalog</a></li>
+                    <li><a className={styles.dropdownItem} href="/tips-tools">Tips and Tools</a></li>
+                    <li><a className={styles.dropdownItem} href="/videos">Video How-tos</a></li>
                   </ul>
                 </div>
               </li>
