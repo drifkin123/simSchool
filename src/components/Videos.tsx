@@ -33,7 +33,7 @@ const Videos: React.FC = () => {
     {
       title: 'What To Do When: Students Raise their Hands',
       url: 'https://youtu.be/QEWmWDzmTgQ',
-      thumbnail: 'https://img.youtube.com/vi/QEWmWDzmTgQ/maxresdefault.jpg'
+      thumbnail: 'https://i.ytimg.com/vi/QEWmWDzmTgQ/hqdefault.jpg'
     },
     {
       title: 'What To Do When: Students Aren\'t Gaining Academically',
