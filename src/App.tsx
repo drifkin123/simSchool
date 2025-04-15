@@ -18,6 +18,7 @@ import Research from './components/Research';
 import UseCase from './components/UseCase';
 import Pricing from './components/Pricing';
 import Videos from './components/Videos';
+import PageInProgress from './components/PageInProgress';
 
 function App() {
   const learnerFeatures = [
@@ -238,6 +239,7 @@ function App() {
             <Route path="/pricing" component={Pricing} />
 
             <Route path="/videos" component={Videos} />
+            <Route component={PageInProgress} />
           </Switch>
         </main>
         <Footer />
