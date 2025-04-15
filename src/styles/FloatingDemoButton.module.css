@@ -1,0 +1,61 @@
+.floatingDemoButton {
+  position: fixed;
+  right: 0;
+  top: 20%;
+  transform: translateY(0);
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 4px 0 0 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  z-index: 1000;
+  box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.floatingDemoButton svg {
+  height: 24px;
+  width: 24px;
+  flex-shrink: 0;
+}
+
+.floatingDemoButton span {
+  white-space: nowrap;
+}
+
+.floatingDemoButton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -10px;
+  bottom: 0;
+  width: 10px;
+  background-color: var(--primary-color);
+  z-index: -1;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.floatingDemoButton:hover {
+  transform: translateX(-10px);
+  background-color: var(--button-hover);
+
+  &::after {
+    background-color: var(--button-hover);
+  }
+}
+
+@media (max-width: 1100px) {
+  .floatingDemoButton {
+    transform: translateX(105px);
+  }
+}
+
+@media (max-width: 768px) {
+  .floatingDemoButton {
+    display: none;
+  }
+}

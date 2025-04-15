@@ -162,7 +162,7 @@ class Header extends Component<{}, State> {
           </nav>
           <div className={styles.headerButtons}>
             <a href="/login" className={`btn btn-secondary`}>User Login</a>
-            <a href="/demo" className={`btn btn-primary`}>Book a Demo</a>
+            {/* <a href="/demo" className={`btn btn-primary`}>Book a Demo</a> */}
           </div>
         </div>
       </header>

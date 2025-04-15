@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { FaChevronRight } from 'react-icons/fa';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import './styles/global.css';
@@ -19,6 +20,7 @@ import UseCase from './components/UseCase';
 import Pricing from './components/Pricing';
 import Videos from './components/Videos';
 import PageInProgress from './components/PageInProgress';
+import styles from './styles/FloatingDemoButton.module.css';
 
 function App() {
   const learnerFeatures = [
@@ -216,6 +218,10 @@ function App() {
       <IndustriesSection />
       <CTASection />
       <NumbersSection />
+      <a href="https://calendly.com/simschool/simschool-demo_discussion" target="_blank" rel="noopener noreferrer" className={styles.floatingDemoButton}>
+        <FaChevronRight size={24} />
+        <span>Book Demo</span>
+      </a>
     </>
   );
 
