@@ -7,7 +7,7 @@ import { IntersectionObserverProps } from '../types/IntersectionObserver';
 interface Feature {
   title: string;
   description: string;
-  image: string;
+  video: string;
 }
 
 interface Props {
@@ -64,7 +64,7 @@ class Features extends React.Component<Props & IntersectionObserverProps, State>
       <p className={styles.featureDescription}>{features[activeFeature].description}</p>
     </div>,
     <div key="card2" className={classNames(styles.featureImage, { [styles.fadeOut]: isTransitioning, [styles.fadeIn]: !isTransitioning })}>
-      <img src={features[activeFeature].image} alt={features[activeFeature].title} />
+      <video src={features[activeFeature].video} autoPlay loop muted playsInline className={styles.featureVideo} />
     </div>])
     const cards = inverse && !isMobile ? cardContents.reverse() : cardContents;
 

@@ -71,8 +71,7 @@ class Header extends Component<{}, State> {
         <div className={classNames(styles.container, styles.headerContainer)}>
           <div className={styles.logo}>
             <a href="/">
-              <img src={'/simSchoolLogo.svg'} alt="simSchool" className={styles.logoImage} />
-              <span className={styles.logoText}><span className={styles.bold}>SIM</span>SCHOOL</span>
+              <img src={'/logo_simschool_horz.png'} alt="simSchool" className={styles.logoImage} />
             </a>
           </div>
 

@@ -11,6 +11,17 @@ class Hero extends Component {
             <h1 className={styles.heroTitle}>
               Improve teaching effectiveness and reflective practice with 24/7 dynamic AI-informed simulations
             </h1>
+            <div className={styles.heroVideo}>
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className={styles.video}
+              >
+                <source src="/vids/home_page_header.mp4" type="video/mp4" />
+              </video>
+            </div>
             <p className={styles.heroSubtitle}>
               Make decisions. Receive personalized feedback. Gain real-time, custom insights
             </p>

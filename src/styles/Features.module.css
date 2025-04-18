@@ -94,7 +94,8 @@
   align-items: center;
 }
 
-.featureImage img {
+.featureImage img,
+.featureVideo {
   max-width: 100%;
   height: auto;
   border-radius: 1rem;
