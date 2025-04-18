@@ -155,14 +155,13 @@ class Header extends Component<{}, State> {
               {isMobile && <li>
                 <div className={styles.mobileButtons}>
                   <a href="/login" className={classNames(`btn btn-secondary`, styles.mobileLogin)}>User Login</a>
-                  <a target="_blank" rel="noopener noreferrer" href="https://calendly.com/simschool/simschool-demo_discussion" className={`btn btn-primary`}>Book a Demo</a>
+                  <a target="_blank" rel="noopener noreferrer" href="https://calendly.com/simschool/simschool-demo-and-discussion-clone" className={`btn btn-primary`}>Book a Demo</a>
                 </div>
               </li>}
             </ul>
           </nav>
           <div className={styles.headerButtons}>
             <a href="/login" className={`btn btn-secondary`}>User Login</a>
-            {/* <a href="/demo" className={`btn btn-primary`}>Book a Demo</a> */}
           </div>
         </div>
       </header>

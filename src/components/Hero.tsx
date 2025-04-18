@@ -22,7 +22,7 @@ class Hero extends Component {
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://calendly.com/simschool/simschool-demo_discussion"
+                href="https://calendly.com/simschool/simschool-demo-and-discussion-clone"
                 className={classNames('btn', 'btn-secondary')}>
                 Book a Demo
               </a>

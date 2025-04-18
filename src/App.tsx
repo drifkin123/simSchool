@@ -218,7 +218,7 @@ function App() {
       <IndustriesSection />
       <CTASection />
       <NumbersSection />
-      <a href="https://calendly.com/simschool/simschool-demo_discussion" target="_blank" rel="noopener noreferrer" className={styles.floatingDemoButton}>
+      <a href="https://calendly.com/simschool/simschool-demo-and-discussion-clone" target="_blank" rel="noopener noreferrer" className={styles.floatingDemoButton}>
         <FaChevronRight size={24} />
         <span>Book a Demo</span>
       </a>

@@ -61,7 +61,7 @@ class ChooseSimSchool extends React.Component<Props & IntersectionObserverProps>
             ))}
           </div>
           <div className={styles.demoButtonContainer}>
-            <a target="_blank" rel="noopener noreferrer" href="https://calendly.com/simschool/simschool-demo_discussion" className={classNames('btn', 'btn-primary')}>Book a Demo</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://calendly.com/simschool/simschool-demo-and-discussion-clone" className={classNames('btn', 'btn-primary')}>Book a Demo</a>
           </div>
         </div>
       </section>
